@@ -72,7 +72,7 @@ export function MapaScreen({ nav }) {
               className="flex items-center gap-4" hover padding={false} style={{ padding: '16px 18px' }}>
               <RegionAvatar code={r.kod} color={REGION_COLORS[idx % REGION_COLORS.length]} size={58} />
               <div className="flex-1 min-w-0">
-                <div className="text-[18px] font-extrabold leading-tight" style={{ color: 'var(--text)' }}>{r.nazov} kraj</div>
+                <div className="text-[18px] font-extrabold leading-tight" style={{ color: 'var(--text)' }}>{r.nazov}</div>
                 <div className="text-[13px] mt-1" style={{ color: 'var(--text-dim)' }}>
                   {r.lokalit || 0} {skPlural(r.lokalit || 0, 'lokalita', 'lokality', 'lokalít')} · {r.ciest || 0} {skPlural(r.ciest || 0, 'cesta', 'cesty', 'ciest')}
                 </div>
@@ -118,8 +118,7 @@ export function RegionScreen({ nav, region }) {
       <div className="flex-1 overflow-y-auto pb-28">
         <div className="px-5 pt-3">
           <h1 className="text-[34px] font-extrabold leading-tight" style={{ color: 'var(--text)' }}>
-            <span>{region.nazov}</span>{' '}
-            <span style={{ color: 'var(--text-faint)', fontSize: '0.7em', fontWeight: 700 }}>kraj</span>
+            {region.nazov}
           </h1>
 
           <div className="mt-4 flex items-center gap-2 flex-wrap">

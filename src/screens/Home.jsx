@@ -45,13 +45,13 @@ export function HomeScreen({ nav }) {
                 region: { nazov: '' },
               })}
               className="absolute bottom-4 left-4 right-4 rounded-2xl p-4 text-left transition hover:-translate-y-0.5"
-              style={{ background: 'rgba(255,255,255,0.96)', backdropFilter: 'blur(8px)' }}>
+              style={{ background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(8px)', boxShadow: '0 4px 24px rgba(0,0,0,0.25)' }}>
               <div className="flex items-center gap-3.5">
-                <NumDot n="P" color="var(--amber)" size={52} />
+                <NumDot n="P" color="#c8a550" size={52} />
                 <div className="flex-1 min-w-0">
-                  <div className="text-[11px] uppercase tracking-[0.12em] font-bold" style={{ color: 'var(--amber-deep)' }}>Tvoj projekt</div>
-                  <div className="text-[17px] font-bold mt-0.5 truncate" style={{ color: 'var(--text)' }}>{topProject.route}</div>
-                  <div className="text-[12px]" style={{ color: 'var(--text-dim)' }}>
+                  <div className="text-[11px] uppercase tracking-[0.12em] font-bold" style={{ color: '#9a7a1a' }}>Tvoj projekt</div>
+                  <div className="text-[17px] font-bold mt-0.5 truncate" style={{ color: '#1a2420' }}>{topProject.route}</div>
+                  <div className="text-[12px]" style={{ color: '#5a6660' }}>
                     {topProject.lokalita}{topProject.sektor ? ` · ${topProject.sektor}` : ''}
                     {topProject.attempts > 0 ? ` · ${topProject.attempts} pokusov` : ''}
                   </div>
@@ -62,15 +62,15 @@ export function HomeScreen({ nav }) {
           ) : (
             <button onClick={() => nav('mapa')}
               className="absolute bottom-4 left-4 right-4 rounded-2xl p-4 text-left transition hover:-translate-y-0.5"
-              style={{ background: 'rgba(255,255,255,0.96)', backdropFilter: 'blur(8px)' }}>
+              style={{ background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(8px)', boxShadow: '0 4px 24px rgba(0,0,0,0.25)' }}>
               <div className="flex items-center gap-3.5">
-                <NumDot n="P" color="var(--amber)" size={52} />
+                <NumDot n="P" color="#c8a550" size={52} />
                 <div className="flex-1 min-w-0">
-                  <div className="text-[11px] uppercase tracking-[0.12em] font-bold" style={{ color: 'var(--amber-deep)' }}>Žiadny projekt</div>
-                  <div className="text-[17px] font-bold mt-0.5" style={{ color: 'var(--text)' }}>Pridaj si cestu do projektov</div>
-                  <div className="text-[12px]" style={{ color: 'var(--text-dim)' }}>Otvor mapu a vyber cestu</div>
+                  <div className="text-[11px] uppercase tracking-[0.12em] font-bold" style={{ color: '#9a7a1a' }}>Žiadny projekt</div>
+                  <div className="text-[17px] font-bold mt-0.5" style={{ color: '#1a2420' }}>Pridaj si cestu do projektov</div>
+                  <div className="text-[12px]" style={{ color: '#5a6660' }}>Otvor mapu a vyber cestu</div>
                 </div>
-                <Icon name="arrowRight" size={20} style={{ color: 'var(--accent)' }} />
+                <Icon name="arrowRight" size={20} style={{ color: '#5a74b8' }} />
               </div>
             </button>
           )}
