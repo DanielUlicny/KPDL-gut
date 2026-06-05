@@ -2,7 +2,7 @@
 import React from 'react';
 import { IOSDevice } from './components/IOSFrame.jsx';
 import {
-  TweaksPanel, TweakSection, TweakSelect, TweakRadio, TweakColor, useTweaks,
+  useTweaks,
 } from './components/TweaksPanel.jsx';
 import { AuthProvider, useAuth } from './contexts/auth.jsx';
 import { REGIONS, LOKALITY, SEKTORY, ROUTES_LOM_A } from './data/mock.js';
@@ -170,38 +170,6 @@ function AppShell() {
         </div>
       </IOSDevice>
 
-      <TweaksPanel title="Tweaks">
-        <TweakSection label="Obrazovka">
-          <TweakSelect label="Show" value={t.screen} onChange={v => setTweak('screen', v)}
-            options={[
-              { value: 'home',     label: 'Domov' },
-              { value: 'mapa',     label: 'Mapa · regióny' },
-              { value: 'region',   label: 'Región (Prešov)' },
-              { value: 'lokalita', label: 'Lokalita (T. Kotlina)' },
-              { value: 'sektor',   label: 'Sektor (Lom A)' },
-              { value: 'route',    label: 'Cesta (Brucho direkt)' },
-              { value: 'projekty', label: 'Projekty' },
-              { value: 'logbook',  label: 'Logbook (záznamy)' },
-              { value: 'profil',   label: 'Profil' },
-            ]} />
-        </TweakSection>
-
-        <TweakSection label="Téma">
-          <TweakRadio label="Pozadie" value={t.palette} onChange={v => setTweak('palette', v)}
-            options={[
-              { value: 'cream',  label: 'Cream' },
-              { value: 'paper',  label: 'Paper' },
-              { value: 'forest', label: 'Dark' },
-            ]} />
-          <TweakColor label="Accent" value={t.accent} onChange={v => setTweak('accent', v)}
-            options={Object.keys(ACCENT_BY_HEX)} />
-        </TweakSection>
-
-        <TweakSection label="Typografia">
-          <TweakSelect label="Display + body" value={t.font} onChange={v => setTweak('font', v)}
-            options={Object.entries(FONT_OPTIONS).map(([k, v]) => ({ value: k, label: v.label }))} />
-        </TweakSection>
-      </TweaksPanel>
     </div>
   );
 }
