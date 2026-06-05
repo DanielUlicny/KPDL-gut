@@ -122,15 +122,15 @@ export function RouteScreen({ nav, back, route, sektor, lokalita, region, ascent
 
         {/* Topo description card */}
         <div className="px-4 mt-4">
-          <Card>
-            <div className="flex items-start gap-3">
-              <div className="w-9 h-9 rounded-full grid place-items-center shrink-0"
+          <Card padding={false} style={{ padding: '14px 16px' }}>
+            <div className="flex items-start gap-3.5">
+              <div className="w-11 h-11 rounded-full grid place-items-center shrink-0"
                 style={{ background: 'var(--green-soft)', color: 'var(--accent-deep)' }}>
-                <Icon name="map" size={16} />
+                <Icon name="map" size={19} />
               </div>
               <div>
-                <div className="text-[14px] font-bold" style={{ color: 'var(--text)' }}>Topo náhľad</div>
-                <p className="text-[12.5px] mt-0.5" style={{ color: 'var(--text-dim)' }}>
+                <div className="text-[16px] font-bold" style={{ color: 'var(--text)' }}>Topo náhľad</div>
+                <p className="text-[13px] mt-0.5" style={{ color: 'var(--text-dim)' }}>
                   Fotka ukazuje smer cesty, nástup aj dolezanie.
                 </p>
               </div>
@@ -140,20 +140,20 @@ export function RouteScreen({ nav, back, route, sektor, lokalita, region, ascent
 
         {/* AR card */}
         <div className="px-4 mt-2.5">
-          <Card>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full grid place-items-center shrink-0"
+          <Card padding={false} style={{ padding: '14px 16px' }}>
+            <div className="flex items-center gap-3.5">
+              <div className="w-11 h-11 rounded-full grid place-items-center shrink-0"
                 style={{ background: 'var(--amber-soft)', color: 'var(--amber-deep)' }}>
-                <Icon name="cube" size={17} />
+                <Icon name="cube" size={19} />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="text-[14px] font-bold leading-tight" style={{ color: 'var(--text)' }}>AR dostupné</div>
-                <p className="text-[12px] mt-0.5 leading-snug" style={{ color: 'var(--text-dim)' }}>
+                <div className="text-[16px] font-bold leading-tight" style={{ color: 'var(--text)' }}>AR dostupné</div>
+                <p className="text-[13px] mt-0.5 leading-snug" style={{ color: 'var(--text-dim)' }}>
                   Otvor kameru a zarovnaj cestu cez značku lokality.
                 </p>
               </div>
               <button onClick={() => setArOpen(true)}
-                className="h-10 px-4 rounded-full text-[12.5px] font-bold shrink-0 self-center"
+                className="h-11 px-4 rounded-full text-[13px] font-bold shrink-0 self-center"
                 style={{ background: 'var(--accent)', color: '#fff' }}>
                 Otvoriť AR
               </button>
@@ -170,10 +170,10 @@ export function RouteScreen({ nav, back, route, sektor, lokalita, region, ascent
           ].map((s, i) => (
             <Card key={i}>
               <div className="flex items-baseline gap-1">
-                <span className="text-[22px] font-extrabold" style={{ color: 'var(--text)' }}>{s.v}</span>
-                {s.u && <span className="text-[12px] font-semibold" style={{ color: 'var(--text-dim)' }}>{s.u}</span>}
+                <span className="text-[26px] font-extrabold" style={{ color: 'var(--text)' }}>{s.v}</span>
+                {s.u && <span className="text-[13px] font-semibold" style={{ color: 'var(--text-dim)' }}>{s.u}</span>}
               </div>
-              <div className="text-[11px] mt-1" style={{ color: 'var(--text-faint)' }}>{s.l}</div>
+              <div className="text-[12px] mt-1.5" style={{ color: 'var(--text-faint)' }}>{s.l}</div>
             </Card>
           ))}
         </div>
@@ -183,19 +183,19 @@ export function RouteScreen({ nav, back, route, sektor, lokalita, region, ascent
           <div className="px-4 mt-4">
             <SectionLabel>Môj prelez</SectionLabel>
             <Card className="mt-2">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full grid place-items-center shrink-0"
+              <div className="flex items-center gap-3.5">
+                <div className="w-12 h-12 rounded-full grid place-items-center shrink-0"
                   style={['flash', 'onsight'].includes(ascent.style)
                     ? { background: 'var(--amber-soft)', color: 'var(--amber-deep)' }
                     : { background: 'var(--green-soft)', color: 'var(--accent-deep)' }}>
-                  <Icon name={['flash', 'onsight'].includes(ascent.style) ? 'bolt' : 'check'} size={17} stroke={2.4}
+                  <Icon name={['flash', 'onsight'].includes(ascent.style) ? 'bolt' : 'check'} size={20} stroke={2.4}
                     fill={['flash', 'onsight'].includes(ascent.style) ? 'currentColor' : 'none'} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-[14px] font-bold" style={{ color: 'var(--text)' }}>
+                  <div className="text-[16px] font-bold" style={{ color: 'var(--text)' }}>
                     {STYLE_LABELS[ascent.style] || ascent.style}
                   </div>
-                  <div className="text-[12px] mt-0.5" style={{ color: 'var(--text-dim)' }}>
+                  <div className="text-[13px] mt-0.5" style={{ color: 'var(--text-dim)' }}>
                     {ascent.ascended_at
                       ? new Date(ascent.ascended_at).toLocaleDateString('sk-SK', { day: 'numeric', month: 'long', year: 'numeric' })
                       : ascent.when}
@@ -253,15 +253,15 @@ export function RouteScreen({ nav, back, route, sektor, lokalita, region, ascent
             ].map((a, i) => (
               <Card key={i} className="flex items-center gap-3" padding={false}>
                 <button onClick={() => nav('publicProfile', { person: a })}
-                  className="flex items-center gap-3 p-2.5 w-full text-left active:scale-[0.99] transition-transform">
-                  <div className="w-9 h-9 rounded-full grid place-items-center font-bold text-[13px]"
+                  className="flex items-center gap-3.5 p-3.5 w-full text-left active:scale-[0.99] transition-transform">
+                  <div className="w-11 h-11 rounded-full grid place-items-center font-bold text-[15px]"
                     style={{ background: 'var(--green-soft)', color: 'var(--accent-deep)' }}>
                     {a.name[0]}
                   </div>
-                  <span className="text-[13px] flex-1 font-semibold" style={{ color: 'var(--text)' }}>{a.name}</span>
-                  <span className="text-[11px] font-semibold" style={{ color: 'var(--accent)' }}>{a.tries}</span>
-                  <span className="text-[11px]" style={{ color: 'var(--text-faint)' }}>{a.when}</span>
-                  <Icon name="chevronRight" size={15} style={{ color: 'var(--text-faint)' }} />
+                  <span className="text-[15px] flex-1 font-semibold" style={{ color: 'var(--text)' }}>{a.name}</span>
+                  <span className="text-[12px] font-semibold" style={{ color: 'var(--accent)' }}>{a.tries}</span>
+                  <span className="text-[12px]" style={{ color: 'var(--text-faint)' }}>{a.when}</span>
+                  <Icon name="chevronRight" size={17} style={{ color: 'var(--text-faint)' }} />
                 </button>
               </Card>
             ))}

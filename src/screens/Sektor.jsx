@@ -94,15 +94,15 @@ export function LokalitaScreen({ nav, lokalita, region }) {
             )}
             {sektory.map(s => (
               <Card key={s.id} onClick={() => nav('sektor', { sektor: s, lokalita, region })}
-                className="flex items-center gap-4" hover padding={false} style={{ padding: '18px 18px' }}>
-                <NumDot n={s.poradie || 1} color="var(--accent)" size={56} />
+                className="flex items-center gap-4" hover padding={false} style={{ padding: '15px 16px' }}>
+                <NumDot n={s.poradie || 1} color="var(--accent)" size={50} />
                 <div className="flex-1 min-w-0">
-                  <div className="text-[19px] font-extrabold leading-tight" style={{ color: 'var(--text)' }}>{s.nazov}</div>
-                  <div className="text-[13.5px] mt-1" style={{ color: 'var(--text-dim)' }}>
+                  <div className="text-[17px] font-extrabold leading-tight" style={{ color: 'var(--text)' }}>{s.nazov}</div>
+                  <div className="text-[12.5px] mt-0.5" style={{ color: 'var(--text-dim)' }}>
                     {s.ciest || 0} {skPlural(s.ciest || 0, 'cesta', 'cesty', 'ciest')}
                   </div>
                 </div>
-                <Icon name="chevronRight" size={20} style={{ color: 'var(--text-faint)' }} />
+                <Icon name="chevronRight" size={19} style={{ color: 'var(--text-faint)' }} />
               </Card>
             ))}
             {!loading && sektory.length === 0 && (

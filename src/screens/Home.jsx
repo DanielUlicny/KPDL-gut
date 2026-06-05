@@ -44,33 +44,33 @@ export function HomeScreen({ nav }) {
                 lokalita: { id: topProject._cesta?.sektory?.lokalita_id, nazov: topProject.lokalita },
                 region: { nazov: '' },
               })}
-              className="absolute bottom-4 left-4 right-4 rounded-2xl p-3.5 text-left transition hover:-translate-y-0.5"
+              className="absolute bottom-4 left-4 right-4 rounded-2xl p-4 text-left transition hover:-translate-y-0.5"
               style={{ background: 'rgba(255,255,255,0.96)', backdropFilter: 'blur(8px)' }}>
-              <div className="flex items-center gap-3">
-                <NumDot n="P" color="var(--amber)" size={42} />
+              <div className="flex items-center gap-3.5">
+                <NumDot n="P" color="var(--amber)" size={52} />
                 <div className="flex-1 min-w-0">
-                  <div className="text-[10px] uppercase tracking-[0.12em] font-bold" style={{ color: 'var(--amber-deep)' }}>Tvoj projekt</div>
-                  <div className="text-[15px] font-bold mt-0.5 truncate" style={{ color: 'var(--text)' }}>{topProject.route}</div>
-                  <div className="text-[11px]" style={{ color: 'var(--text-dim)' }}>
+                  <div className="text-[11px] uppercase tracking-[0.12em] font-bold" style={{ color: 'var(--amber-deep)' }}>Tvoj projekt</div>
+                  <div className="text-[17px] font-bold mt-0.5 truncate" style={{ color: 'var(--text)' }}>{topProject.route}</div>
+                  <div className="text-[12px]" style={{ color: 'var(--text-dim)' }}>
                     {topProject.lokalita}{topProject.sektor ? ` · ${topProject.sektor}` : ''}
                     {topProject.attempts > 0 ? ` · ${topProject.attempts} pokusov` : ''}
                   </div>
                 </div>
-                <GradeBadge grade={topProject.grade} size="md" />
+                <GradeBadge grade={topProject.grade} size="lg" />
               </div>
             </button>
           ) : (
             <button onClick={() => nav('mapa')}
-              className="absolute bottom-4 left-4 right-4 rounded-2xl p-3.5 text-left transition hover:-translate-y-0.5"
+              className="absolute bottom-4 left-4 right-4 rounded-2xl p-4 text-left transition hover:-translate-y-0.5"
               style={{ background: 'rgba(255,255,255,0.96)', backdropFilter: 'blur(8px)' }}>
-              <div className="flex items-center gap-3">
-                <NumDot n="P" color="var(--amber)" size={42} />
+              <div className="flex items-center gap-3.5">
+                <NumDot n="P" color="var(--amber)" size={52} />
                 <div className="flex-1 min-w-0">
-                  <div className="text-[10px] uppercase tracking-[0.12em] font-bold" style={{ color: 'var(--amber-deep)' }}>Žiadny projekt</div>
-                  <div className="text-[15px] font-bold mt-0.5" style={{ color: 'var(--text)' }}>Pridaj si cestu do projektov</div>
-                  <div className="text-[11px]" style={{ color: 'var(--text-dim)' }}>Otvor mapu a vyber cestu</div>
+                  <div className="text-[11px] uppercase tracking-[0.12em] font-bold" style={{ color: 'var(--amber-deep)' }}>Žiadny projekt</div>
+                  <div className="text-[17px] font-bold mt-0.5" style={{ color: 'var(--text)' }}>Pridaj si cestu do projektov</div>
+                  <div className="text-[12px]" style={{ color: 'var(--text-dim)' }}>Otvor mapu a vyber cestu</div>
                 </div>
-                <Icon name="arrowRight" size={18} style={{ color: 'var(--accent)' }} />
+                <Icon name="arrowRight" size={20} style={{ color: 'var(--accent)' }} />
               </div>
             </button>
           )}
@@ -83,18 +83,18 @@ export function HomeScreen({ nav }) {
             {nearbyLokality.slice(0, 5).map((l, i) => (
               <button key={l.id || i}
                 onClick={() => nav('lokalita', { lokalita: l, region: { nazov: '' } })}
-                className="shrink-0 w-[180px] text-left rounded-2xl overflow-hidden transition hover:-translate-y-0.5"
+                className="shrink-0 w-[210px] text-left rounded-2xl overflow-hidden transition hover:-translate-y-0.5"
                 style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
-                <div className="h-[90px] relative" style={{ background: i === 0 ? 'linear-gradient(135deg, #4a7a5e, #2a5840)' : i === 1 ? 'linear-gradient(135deg, #a87544, #6b4523)' : 'linear-gradient(135deg, #5d8d6f, #3a6a4b)' }}>
-                  <svg viewBox="0 0 180 90" className="w-full h-full" preserveAspectRatio="xMidYMid slice">
-                    <polyline points="0,75 30,40 60,55 100,30 140,50 180,35 180,90 0,90" fill="rgba(0,0,0,0.25)" />
+                <div className="h-[115px] relative" style={{ background: i === 0 ? 'linear-gradient(135deg, #4a7a5e, #2a5840)' : i === 1 ? 'linear-gradient(135deg, #a87544, #6b4523)' : 'linear-gradient(135deg, #5d8d6f, #3a6a4b)' }}>
+                  <svg viewBox="0 0 210 115" className="w-full h-full" preserveAspectRatio="xMidYMid slice">
+                    <polyline points="0,90 35,50 70,65 115,38 155,58 210,42 210,115 0,115" fill="rgba(0,0,0,0.25)" />
                   </svg>
                 </div>
-                <div className="p-3">
-                  <div className="text-[12px] font-bold leading-tight truncate" style={{ color: 'var(--text)' }}>{l.nazov}</div>
-                  <div className="flex items-center justify-between mt-1.5">
-                    <span className="text-[11px]" style={{ color: 'var(--text-dim)' }}>{l.sektorov || 0} {skPlural(l.sektorov || 0, 'sektor', 'sektory', 'sektorov')}</span>
-                    <span className="text-[11px] font-semibold" style={{ color: 'var(--accent)' }}>{l.ciest || 0} {skPlural(l.ciest || 0, 'cesta', 'cesty', 'ciest')}</span>
+                <div className="p-3.5">
+                  <div className="text-[14px] font-bold leading-tight truncate" style={{ color: 'var(--text)' }}>{l.nazov}</div>
+                  <div className="flex items-center justify-between mt-2">
+                    <span className="text-[12px]" style={{ color: 'var(--text-dim)' }}>{l.sektorov || 0} {skPlural(l.sektorov || 0, 'sektor', 'sektory', 'sektorov')}</span>
+                    <span className="text-[12px] font-semibold" style={{ color: 'var(--accent)' }}>{l.ciest || 0} {skPlural(l.ciest || 0, 'cesta', 'cesty', 'ciest')}</span>
                   </div>
                 </div>
               </button>
@@ -109,21 +109,21 @@ export function HomeScreen({ nav }) {
         <div className="px-4 mt-6">
           <SectionLabel right={<span>Tento týždeň</span>}>Pokračuj v lezení</SectionLabel>
           <Card className="mt-3" padding={false}>
-            <div className="p-4 grid grid-cols-3">
+            <div className="p-5 grid grid-cols-3">
               <div className="flex flex-col items-start">
-                <div className="text-[28px] font-extrabold leading-none" style={{ color: 'var(--text)' }}>{stats.thisWeek}</div>
-                <div className="text-[11px] mt-1" style={{ color: 'var(--text-dim)' }}>Sessiony</div>
+                <div className="text-[32px] font-extrabold leading-none" style={{ color: 'var(--text)' }}>{stats.thisWeek}</div>
+                <div className="text-[12px] mt-1.5" style={{ color: 'var(--text-dim)' }}>Sessiony</div>
               </div>
-              <div className="flex flex-col items-start" style={{ borderLeft: '1px solid var(--border)', paddingLeft: 16 }}>
+              <div className="flex flex-col items-start" style={{ borderLeft: '1px solid var(--border)', paddingLeft: 18 }}>
                 <div className="flex items-baseline gap-1">
-                  <div className="text-[28px] font-extrabold leading-none" style={{ color: 'var(--accent)' }}>{stats.streak}</div>
-                  <Icon name="flame" size={14} style={{ color: 'var(--amber)' }} fill="currentColor" />
+                  <div className="text-[32px] font-extrabold leading-none" style={{ color: 'var(--accent)' }}>{stats.streak}</div>
+                  <Icon name="flame" size={16} style={{ color: 'var(--amber)' }} fill="currentColor" />
                 </div>
-                <div className="text-[11px] mt-1" style={{ color: 'var(--text-dim)' }}>Streak (dní)</div>
+                <div className="text-[12px] mt-1.5" style={{ color: 'var(--text-dim)' }}>Streak (dní)</div>
               </div>
-              <div className="flex flex-col items-start" style={{ borderLeft: '1px solid var(--border)', paddingLeft: 16 }}>
-                <div className="text-[28px] font-extrabold leading-none" style={{ color: 'var(--text)' }}>{stats.best}</div>
-                <div className="text-[11px] mt-1" style={{ color: 'var(--text-dim)' }}>Najťažšia</div>
+              <div className="flex flex-col items-start" style={{ borderLeft: '1px solid var(--border)', paddingLeft: 18 }}>
+                <div className="text-[32px] font-extrabold leading-none" style={{ color: 'var(--text)' }}>{stats.best}</div>
+                <div className="text-[12px] mt-1.5" style={{ color: 'var(--text-dim)' }}>Najťažšia</div>
               </div>
             </div>
           </Card>
@@ -133,11 +133,11 @@ export function HomeScreen({ nav }) {
         <div className="px-4 mt-6">
           <SectionLabel right={<button onClick={() => nav('logbook')} className="font-semibold" style={{ color: 'var(--accent)' }}>Logbook →</button>}>Posledný prelez</SectionLabel>
           {lastEntry ? (
-            <Card className="mt-3 flex items-center gap-3" hover onClick={() => nav('logbook')}>
-              <NumDot n={lastEntry.poradie || '✓'} color="var(--accent)" size={40} />
+            <Card className="mt-3 flex items-center gap-3.5" hover onClick={() => nav('logbook')} padding={false} style={{ padding: '16px' }}>
+              <NumDot n={lastEntry.poradie || '✓'} color="var(--accent)" size={50} />
               <div className="flex-1">
-                <div className="text-[14px] font-bold" style={{ color: 'var(--text)' }}>{lastEntry.route}</div>
-                <div className="text-[11px]" style={{ color: 'var(--text-dim)' }}>
+                <div className="text-[16px] font-bold" style={{ color: 'var(--text)' }}>{lastEntry.route}</div>
+                <div className="text-[12.5px] mt-0.5" style={{ color: 'var(--text-dim)' }}>
                   {lastEntry.sektor ? `${lastEntry.sektor} · ` : ''}{lastEntry.when} · {lastEntry.style}
                 </div>
               </div>

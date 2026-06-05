@@ -371,19 +371,19 @@ export function ProfilScreen({ nav }) {
         {/* Stats */}
         <div className="px-4 mt-5 grid grid-cols-3 gap-2">
           <Card>
-            <div className="text-[24px] font-extrabold leading-none" style={{ color: 'var(--text)' }}>{stats.sent}</div>
-            <div className="text-[11px] mt-1.5" style={{ color: 'var(--text-dim)' }}>{skPlural(stats.sent, 'Prelezená cesta', 'Prelezené cesty', 'Prelezených ciest')}</div>
+            <div className="text-[28px] font-extrabold leading-none" style={{ color: 'var(--text)' }}>{stats.sent}</div>
+            <div className="text-[12px] mt-2" style={{ color: 'var(--text-dim)' }}>{skPlural(stats.sent, 'Prelezená cesta', 'Prelezené cesty', 'Prelezených ciest')}</div>
           </Card>
           <Card>
-            <div className="text-[24px] font-extrabold leading-none" style={{ color: 'var(--text)' }}>
+            <div className="text-[28px] font-extrabold leading-none" style={{ color: 'var(--text)' }}>
               {stats.totalLen}
-              <span className="text-[14px] font-bold ml-0.5">m</span>
+              <span className="text-[15px] font-bold ml-0.5">m</span>
             </div>
-            <div className="text-[11px] mt-1.5" style={{ color: 'var(--text-dim)' }}>Celková dĺžka</div>
+            <div className="text-[12px] mt-2" style={{ color: 'var(--text-dim)' }}>Celková dĺžka</div>
           </Card>
           <Card>
-            <div className="text-[24px] font-extrabold leading-none" style={{ color: 'var(--accent)' }}>{stats.best}</div>
-            <div className="text-[11px] mt-1.5" style={{ color: 'var(--text-dim)' }}>Najťažšia</div>
+            <div className="text-[28px] font-extrabold leading-none" style={{ color: 'var(--accent)' }}>{stats.best}</div>
+            <div className="text-[12px] mt-2" style={{ color: 'var(--text-dim)' }}>Najťažšia</div>
           </Card>
         </div>
 
@@ -399,17 +399,17 @@ export function ProfilScreen({ nav }) {
             <div className="flex-1 min-w-0">
               {topProject ? (
                 <>
-                  <div className="text-[14px] font-bold" style={{ color: 'var(--accent-deep)' }}>
+                  <div className="text-[16px] font-bold" style={{ color: 'var(--accent-deep)' }}>
                     Máš {projects.length} aktívn{projects.length === 1 ? 'ý projekt' : 'é projekty'}
                   </div>
-                  <div className="text-[12px] truncate" style={{ color: 'var(--text-dim)' }}>
+                  <div className="text-[13px] truncate" style={{ color: 'var(--text-dim)' }}>
                     {topProject.route} · {topProject.grade}{topProject.sektor ? ` · ${topProject.sektor}` : ''}
                   </div>
                 </>
               ) : (
                 <>
-                  <div className="text-[14px] font-bold" style={{ color: 'var(--accent-deep)' }}>Žiadne aktívne projekty</div>
-                  <div className="text-[12px]" style={{ color: 'var(--text-dim)' }}>Pridaj cestu do projektov</div>
+                  <div className="text-[16px] font-bold" style={{ color: 'var(--accent-deep)' }}>Žiadne aktívne projekty</div>
+                  <div className="text-[13px]" style={{ color: 'var(--text-dim)' }}>Pridaj cestu do projektov</div>
                 </>
               )}
             </div>
@@ -460,20 +460,20 @@ export function ProfilScreen({ nav }) {
             { icon: 'clipboard', label: 'Vylezené cesty', sub: `${stats.sent} ${skPlural(stats.sent, 'záznam', 'záznamy', 'záznamov')} · filtre podľa obtiažnosti`, badge: stats.sent > 0 ? String(stats.sent) : null, go: 'logbook' },
             { icon: 'map', label: 'Navštívené lokality', sub: `${visited.length} lokalít s prelezmi`, badge: visited.length > 0 ? String(visited.length) : null, go: 'visited' },
           ].map((m, i) => (
-            <Card key={i} className="flex items-center gap-3" hover onClick={() => nav(m.go)}>
-              <div className="w-9 h-9 rounded-full grid place-items-center shrink-0"
+            <Card key={i} className="flex items-center gap-3.5" hover onClick={() => nav(m.go)} padding={false} style={{ padding: '14px 16px' }}>
+              <div className="w-11 h-11 rounded-full grid place-items-center shrink-0"
                 style={{ background: 'var(--green-soft)', color: 'var(--accent-deep)' }}>
-                <Icon name={m.icon} size={16} />
+                <Icon name={m.icon} size={19} />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="text-[14px] font-bold" style={{ color: 'var(--text)' }}>{m.label}</div>
-                <div className="text-[11.5px] mt-0.5" style={{ color: 'var(--text-dim)' }}>{m.sub}</div>
+                <div className="text-[16px] font-bold" style={{ color: 'var(--text)' }}>{m.label}</div>
+                <div className="text-[12.5px] mt-0.5" style={{ color: 'var(--text-dim)' }}>{m.sub}</div>
               </div>
               {m.badge && (
-                <span className="text-[11px] font-bold px-2 h-6 inline-flex items-center rounded-full"
+                <span className="text-[12px] font-bold px-2.5 h-7 inline-flex items-center rounded-full"
                   style={{ background: 'var(--bg-2)', color: 'var(--text-dim)' }}>{m.badge}</span>
               )}
-              <Icon name="chevronRight" size={16} style={{ color: 'var(--text-faint)' }} />
+              <Icon name="chevronRight" size={18} style={{ color: 'var(--text-faint)' }} />
             </Card>
           ))}
         </div>
@@ -483,21 +483,21 @@ export function ProfilScreen({ nav }) {
           <SectionLabel>Nastavenia</SectionLabel>
           <div className="mt-2 space-y-2">
             <Card className="flex items-center gap-3" padding={false}>
-              <div className="flex items-center gap-3 p-3 w-full">
-                <Icon name="bell" size={17} stroke={2} style={{ color: 'var(--text-dim)' }} />
-                <span className="flex-1 text-[14px] font-semibold" style={{ color: 'var(--text)' }}>Notifikácie</span>
-                <span className="text-[12px] font-semibold" style={{ color: 'var(--text-faint)' }}>Zapnuté</span>
-                <Icon name="chevronRight" size={16} style={{ color: 'var(--text-faint)' }} />
+              <div className="flex items-center gap-3.5 p-4 w-full">
+                <Icon name="bell" size={19} stroke={2} style={{ color: 'var(--text-dim)' }} />
+                <span className="flex-1 text-[15px] font-semibold" style={{ color: 'var(--text)' }}>Notifikácie</span>
+                <span className="text-[13px] font-semibold" style={{ color: 'var(--text-faint)' }}>Zapnuté</span>
+                <Icon name="chevronRight" size={17} style={{ color: 'var(--text-faint)' }} />
               </div>
             </Card>
 
             <Card className="flex items-center gap-3" padding={false} onClick={isDemo ? undefined : signOut}>
-              <div className="flex items-center gap-3 p-3 w-full">
-                <Icon name="logout" size={17} stroke={2} style={{ color: 'var(--red)' }} />
-                <span className="flex-1 text-[14px] font-semibold" style={{ color: 'var(--red-deep)' }}>
+              <div className="flex items-center gap-3.5 p-4 w-full">
+                <Icon name="logout" size={19} stroke={2} style={{ color: 'var(--red)' }} />
+                <span className="flex-1 text-[15px] font-semibold" style={{ color: 'var(--red-deep)' }}>
                   {isDemo ? 'Odhlásenie (demo)' : 'Odhlásenie'}
                 </span>
-                <Icon name="chevronRight" size={16} style={{ color: 'var(--text-faint)' }} />
+                <Icon name="chevronRight" size={17} style={{ color: 'var(--text-faint)' }} />
               </div>
             </Card>
           </div>
