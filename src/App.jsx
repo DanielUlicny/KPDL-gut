@@ -4,6 +4,7 @@ import {
   useTweaks,
 } from './components/TweaksPanel.jsx';
 import { AuthProvider, useAuth } from './contexts/auth.jsx';
+import { DataProvider } from './contexts/data.jsx';
 import { REGIONS, LOKALITY, SEKTORY, ROUTES_LOM_A } from './data/mock.js';
 
 import { HomeScreen } from './screens/Home.jsx';
@@ -170,7 +171,9 @@ function AppShell() {
 export default function App() {
   return (
     <AuthProvider>
-      <AppShell />
+      <DataProvider>
+        <AppShell />
+      </DataProvider>
     </AuthProvider>
   );
 }
