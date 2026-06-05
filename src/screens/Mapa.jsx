@@ -66,18 +66,18 @@ export function MapaScreen({ nav }) {
         </div>
 
         {/* Region list */}
-        <div className="px-4 space-y-2.5">
+        <div className="px-4 space-y-3">
           {kraje.map((r, idx) => (
             <Card key={r.kod || idx} onClick={() => nav('region', { region: r })}
-              className="flex items-center gap-3" hover>
-              <RegionAvatar code={r.kod} color={REGION_COLORS[idx % REGION_COLORS.length]} size={44} />
+              className="flex items-center gap-4" hover padding={false} style={{ padding: '16px 18px' }}>
+              <RegionAvatar code={r.kod} color={REGION_COLORS[idx % REGION_COLORS.length]} size={58} />
               <div className="flex-1 min-w-0">
-                <div className="text-[15px] font-bold leading-tight" style={{ color: 'var(--text)' }}>{r.nazov} kraj</div>
-                <div className="text-[12px] mt-0.5" style={{ color: 'var(--text-dim)' }}>
+                <div className="text-[18px] font-extrabold leading-tight" style={{ color: 'var(--text)' }}>{r.nazov} kraj</div>
+                <div className="text-[13px] mt-1" style={{ color: 'var(--text-dim)' }}>
                   {r.lokalit || 0} {skPlural(r.lokalit || 0, 'lokalita', 'lokality', 'lokalít')} · {r.ciest || 0} {skPlural(r.ciest || 0, 'cesta', 'cesty', 'ciest')}
                 </div>
               </div>
-              <Icon name="chevronRight" size={18} style={{ color: 'var(--text-faint)' }} />
+              <Icon name="chevronRight" size={20} style={{ color: 'var(--text-faint)' }} />
             </Card>
           ))}
         </div>
@@ -155,28 +155,28 @@ export function RegionScreen({ nav, region }) {
           {filtered.map(l => (
             <Card key={l.id} onClick={() => nav('lokalita', { lokalita: l, region })} padding={false} hover>
               <div className="flex">
-                <div className="w-[110px] h-[110px] shrink-0 relative overflow-hidden rounded-l-2xl"
+                <div className="w-[130px] h-[130px] shrink-0 relative overflow-hidden rounded-l-2xl"
                   style={{ background: 'linear-gradient(135deg, #1a2e1f 0%, #0a1410 100%)' }}>
-                  <svg viewBox="0 0 110 110" className="w-full h-full" preserveAspectRatio="xMidYMid slice">
-                    {Array.from({ length: 14 }).map((_, i) => {
-                      const x = (i * 17) % 110, y = (i * 11) % 50;
-                      return <circle key={i} cx={x} cy={y} r="0.6" fill="#fff" opacity="0.5" />;
+                  <svg viewBox="0 0 130 130" className="w-full h-full" preserveAspectRatio="xMidYMid slice">
+                    {Array.from({ length: 18 }).map((_, i) => {
+                      const x = (i * 19) % 130, y = (i * 13) % 60;
+                      return <circle key={i} cx={x} cy={y} r="0.7" fill="#fff" opacity="0.5" />;
                     })}
-                    <path d="M0 90 L20 60 L40 70 L60 45 L80 65 L110 50 L110 110 L0 110 Z" fill="#0a1410" stroke="rgba(60,90,70,0.5)" strokeWidth="0.5" />
+                    <path d="M0 105 L25 72 L50 84 L78 52 L100 78 L130 58 L130 130 L0 130 Z" fill="#0a1410" stroke="rgba(60,90,70,0.5)" strokeWidth="0.5" />
                   </svg>
-                  <div className="absolute bottom-1.5 left-1.5 text-[9px] font-bold uppercase tracking-[0.08em] text-white/80">
+                  <div className="absolute bottom-2 left-2 text-[10px] font-bold uppercase tracking-[0.08em] text-white/80">
                     {l.nazov.split(' ')[0]}
                   </div>
                 </div>
-                <div className="flex-1 p-3.5 pr-2 min-w-0">
+                <div className="flex-1 p-4 pr-3 min-w-0">
                   <div className="flex items-start justify-between gap-2">
-                    <div className="text-[15px] font-bold leading-tight" style={{ color: 'var(--text)' }}>{l.nazov}</div>
-                    <Icon name="chevronRight" size={16} style={{ color: 'var(--text-faint)' }} />
+                    <div className="text-[17px] font-extrabold leading-tight" style={{ color: 'var(--text)' }}>{l.nazov}</div>
+                    <Icon name="chevronRight" size={18} style={{ color: 'var(--text-faint)' }} />
                   </div>
-                  <p className="text-[12px] mt-1.5 leading-snug" style={{ color: 'var(--text-dim)' }}>
-                    {(l.popis || '').length > 78 ? (l.popis || '').slice(0, 78) + '…' : (l.popis || '')}
+                  <p className="text-[13px] mt-2 leading-snug" style={{ color: 'var(--text-dim)' }}>
+                    {(l.popis || '').length > 72 ? (l.popis || '').slice(0, 72) + '…' : (l.popis || '')}
                   </p>
-                  <div className="flex items-center gap-1.5 mt-2">
+                  <div className="flex items-center gap-1.5 mt-3">
                     <Pill tone="softer" size="sm">{l.sektorov || 0} {skPlural(l.sektorov || 0, 'sektor', 'sektory', 'sektorov')}</Pill>
                     <Pill tone="softer" size="sm">{l.ciest || 0} {skPlural(l.ciest || 0, 'cesta', 'cesty', 'ciest')}</Pill>
                   </div>

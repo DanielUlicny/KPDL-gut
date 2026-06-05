@@ -94,15 +94,15 @@ export function LokalitaScreen({ nav, lokalita, region }) {
             )}
             {sektory.map(s => (
               <Card key={s.id} onClick={() => nav('sektor', { sektor: s, lokalita, region })}
-                className="flex items-center gap-4" hover padding={false} style={{ padding: '14px 16px' }}>
-                <NumDot n={s.poradie || 1} color="var(--accent)" size={46} />
+                className="flex items-center gap-4" hover padding={false} style={{ padding: '18px 18px' }}>
+                <NumDot n={s.poradie || 1} color="var(--accent)" size={56} />
                 <div className="flex-1 min-w-0">
-                  <div className="text-[17px] font-extrabold leading-tight" style={{ color: 'var(--text)' }}>{s.nazov}</div>
-                  <div className="text-[12.5px] mt-0.5" style={{ color: 'var(--text-dim)' }}>
+                  <div className="text-[19px] font-extrabold leading-tight" style={{ color: 'var(--text)' }}>{s.nazov}</div>
+                  <div className="text-[13.5px] mt-1" style={{ color: 'var(--text-dim)' }}>
                     {s.ciest || 0} {skPlural(s.ciest || 0, 'cesta', 'cesty', 'ciest')}
                   </div>
                 </div>
-                <Icon name="chevronRight" size={18} style={{ color: 'var(--text-faint)' }} />
+                <Icon name="chevronRight" size={20} style={{ color: 'var(--text-faint)' }} />
               </Card>
             ))}
             {!loading && sektory.length === 0 && (
@@ -227,29 +227,29 @@ export function SektorScreen({ nav, sektor, lokalita, region }) {
             return (
               <Card key={r.id} padding={false}>
                 <button onClick={() => setExpanded(isExpanded ? null : r.id)}
-                  className="w-full flex items-center gap-3 p-3 text-left">
-                  <NumDot n={r.poradie || 1} color={isSent ? 'var(--accent)' : 'var(--text-faint)'} size={32} />
+                  className="w-full flex items-center gap-3.5 p-4 text-left">
+                  <NumDot n={r.poradie || 1} color={isSent ? 'var(--accent)' : 'var(--text-faint)'} size={40} />
                   <div className="flex-1 min-w-0">
-                    <div className="text-[14px] font-bold" style={{ color: 'var(--text)' }}>{r.nazov}</div>
+                    <div className="text-[16px] font-bold" style={{ color: 'var(--text)' }}>{r.nazov}</div>
                     {isExpanded && (
-                      <div className="text-[11.5px] mt-0.5" style={{ color: 'var(--text-dim)' }}>
+                      <div className="text-[12.5px] mt-1" style={{ color: 'var(--text-dim)' }}>
                         Dĺžka {r.dlzka_m || '?'} m · {r.pocet_isteni || '?'} expresiek
                       </div>
                     )}
                   </div>
-                  <GradeBadge grade={r.obtaznost} size="sm" />
+                  <GradeBadge grade={r.obtaznost} size="md" />
                   {isSent && !isExpanded && (
-                    <div className="w-5 h-5 rounded-full grid place-items-center"
+                    <div className="w-6 h-6 rounded-full grid place-items-center"
                       style={{ background: 'var(--green-soft)', color: 'var(--accent)' }}>
-                      <Icon name="check" size={11} stroke={2.8} />
+                      <Icon name="check" size={13} stroke={2.8} />
                     </div>
                   )}
                   {!isExpanded && !isSent && (
-                    <Icon name="chevronRight" size={16} style={{ color: 'var(--text-faint)' }} />
+                    <Icon name="chevronRight" size={18} style={{ color: 'var(--text-faint)' }} />
                   )}
                 </button>
                 {isExpanded && (
-                  <div className="px-3 pb-3 flex gap-2 items-center">
+                  <div className="px-4 pb-4 flex gap-2 items-center">
                     <button onClick={() => nav('route', { route: r, sektor, lokalita, region })}
                       className="flex-1 h-10 rounded-full font-bold text-[13px] flex items-center justify-center gap-1.5"
                       style={{ background: 'var(--accent)', color: '#fff' }}>

@@ -176,7 +176,7 @@ export function ProjektyScreen({ nav, back }) {
         </div>
 
         {tab === 'hotove' ? (
-          <div className="px-4 mt-4 space-y-2">
+          <div className="px-4 mt-4 space-y-2.5">
             {logbook.length === 0 && (
               <div className="rounded-2xl p-6 text-center" style={{ border: '1px dashed var(--border-2)' }}>
                 <div className="text-[13px] font-semibold" style={{ color: 'var(--text-faint)' }}>
@@ -186,18 +186,18 @@ export function ProjektyScreen({ nav, back }) {
             )}
             {logbook.map((l, i) => (
               <Card key={l.id || i} className="flex items-center gap-3" padding={false}>
-                <div className="flex items-center gap-3 p-3 w-full">
-                  <div className="w-9 h-9 rounded-full grid place-items-center shrink-0"
+                <div className="flex items-center gap-3.5 p-4 w-full">
+                  <div className="w-11 h-11 rounded-full grid place-items-center shrink-0"
                     style={{ background: 'var(--green-soft)', color: 'var(--accent-deep)' }}>
-                    <Icon name="check" size={16} stroke={2.6} />
+                    <Icon name="check" size={19} stroke={2.6} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-[14px] font-bold leading-tight truncate" style={{ color: 'var(--text)' }}>{l.route}</div>
-                    <div className="text-[11.5px] mt-0.5 truncate" style={{ color: 'var(--text-dim)' }}>
+                    <div className="text-[16px] font-bold leading-tight truncate" style={{ color: 'var(--text)' }}>{l.route}</div>
+                    <div className="text-[12.5px] mt-0.5 truncate" style={{ color: 'var(--text-dim)' }}>
                       {l.sektor ? `${l.sektor} · ` : ''}{l.when} · {l.style}
                     </div>
                   </div>
-                  <GradeBadge grade={l.grade} size="sm" />
+                  <GradeBadge grade={l.grade} size="md" />
                 </div>
               </Card>
             ))}
@@ -206,18 +206,18 @@ export function ProjektyScreen({ nav, back }) {
           <div className="px-4 mt-4 space-y-4">
             {projects.map((p, i) => (
               <Card key={p.id || i} padding={false}>
-                <div className="p-4">
-                  <div className="flex items-start gap-3">
-                    <NumDot n="P" color="var(--amber)" size={40} />
+                <div className="p-5">
+                  <div className="flex items-start gap-3.5">
+                    <NumDot n="P" color="var(--amber)" size={50} />
                     <div className="flex-1 min-w-0">
-                      <div className="text-[17px] font-extrabold truncate" style={{ color: 'var(--text)' }}>{p.route}</div>
-                      <div className="text-[12px] mt-0.5" style={{ color: 'var(--text-dim)' }}>
+                      <div className="text-[19px] font-extrabold truncate" style={{ color: 'var(--text)' }}>{p.route}</div>
+                      <div className="text-[13px] mt-0.5" style={{ color: 'var(--text-dim)' }}>
                         <span className="font-semibold">{p.grade}</span>
                         {p.length ? ` · ${p.length} m` : ''}
                         {p.bolts ? ` · ${p.bolts} expresiek` : ''}
                       </div>
                     </div>
-                    <GradeBadge grade={p.grade} size="md" />
+                    <GradeBadge grade={p.grade} size="lg" />
                   </div>
 
                   <div className="flex items-center gap-2 mt-3 flex-wrap">
@@ -592,20 +592,20 @@ export function LogbookScreen({ nav, back }) {
             return (
               <Card key={g.key} padding={false} className="overflow-hidden">
                 <button onClick={() => setOpenKey(open ? null : g.key)}
-                  className="w-full flex items-center gap-3 p-3 text-left">
-                  <div className="w-9 h-9 rounded-full grid place-items-center shrink-0"
+                  className="w-full flex items-center gap-3.5 p-4 text-left">
+                  <div className="w-11 h-11 rounded-full grid place-items-center shrink-0"
                     style={{ background: isFlash ? 'var(--amber-soft)' : 'var(--green-soft)', color: isFlash ? 'var(--amber-deep)' : 'var(--accent-deep)' }}>
-                    <Icon name={isFlash ? 'bolt' : 'check'} size={16} stroke={2.4} fill={isFlash ? 'currentColor' : 'none'} />
+                    <Icon name={isFlash ? 'bolt' : 'check'} size={19} stroke={2.4} fill={isFlash ? 'currentColor' : 'none'} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-[14px] font-bold leading-tight" style={{ color: 'var(--text)' }}>{g.route}</div>
-                    <div className="text-[11.5px] mt-0.5 truncate" style={{ color: 'var(--text-dim)' }}>
+                    <div className="text-[16px] font-bold leading-tight" style={{ color: 'var(--text)' }}>{g.route}</div>
+                    <div className="text-[12.5px] mt-0.5 truncate" style={{ color: 'var(--text-dim)' }}>
                       {g.lokalita ? `${g.lokalita} · ` : ''}{g.sektor ? `${g.sektor} · ` : ''}{lastAscent.when}
                       {g.count > 1 && <span className="ml-1" style={{ color: 'var(--accent)' }}>+{g.count - 1}</span>}
                     </div>
                   </div>
                   <span className="text-[11px] font-semibold" style={{ color: 'var(--accent)' }}>{g.bestStyle}</span>
-                  <GradeBadge grade={g.grade} size="sm" />
+                  <GradeBadge grade={g.grade} size="md" />
                   <Icon name="chevronDown" size={16}
                     style={{ color: 'var(--text-faint)', transition: 'transform 0.2s', transform: open ? 'rotate(180deg)' : 'none' }} />
                 </button>
@@ -672,6 +672,15 @@ export function LogbookScreen({ nav, back }) {
   );
 }
 
+const STAMP_COLORS = [
+  ['#2a6f4a', '#1d5236'],
+  ['#1d5472', '#133d54'],
+  ['#7a4a1d', '#5c3712'],
+  ['#5d2a6f', '#3f1d52'],
+  ['#6f4a2a', '#523512'],
+  ['#2a4a6f', '#1d3554'],
+];
+
 export function VisitedScreen({ nav, back }) {
   const { logbook } = useLogbook();
   const visited = useVisited(logbook);
@@ -686,34 +695,56 @@ export function VisitedScreen({ nav, back }) {
             {visited.length > 0 ? `${visited.length} lokalít s prelezmi.` : 'Zatiaľ žiadne navštívené lokality.'}
           </p>
         </div>
-        <div className="px-4 mt-4 space-y-2">
-          {visited.length === 0 && (
+
+        {visited.length === 0 ? (
+          <div className="px-4 mt-4">
             <div className="rounded-2xl p-6 text-center" style={{ border: '1px dashed var(--border-2)' }}>
               <div className="text-[13px] font-semibold" style={{ color: 'var(--text-faint)' }}>
                 Zalez prvú cestu v nejakej lokalite a objaví sa tu.
               </div>
             </div>
-          )}
-          {visited.map((v, i) => (
-            <Card key={i} className="flex items-center gap-3" hover>
-              <div className="w-11 h-11 rounded-2xl grid place-items-center shrink-0"
-                style={{ background: 'var(--green-soft)', color: 'var(--accent-deep)' }}>
-                <Icon name="mountain" size={20} stroke={2} />
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="text-[15px] font-extrabold leading-tight truncate" style={{ color: 'var(--text)' }}>{v.name}</div>
-                <div className="text-[11.5px] mt-0.5" style={{ color: 'var(--text-dim)' }}>
-                  {v.lastVisit ? `posledný prelez · ${v.lastVisit}` : ''}
+          </div>
+        ) : (
+          <div className="px-4 mt-4 grid grid-cols-2 gap-3">
+            {visited.map((v, i) => {
+              const [c1, c2] = STAMP_COLORS[i % STAMP_COLORS.length];
+              const initials = v.name.split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase();
+              return (
+                <div key={i} className="rounded-3xl overflow-hidden flex flex-col"
+                  style={{ border: '2px solid var(--border)', background: 'var(--card)' }}>
+                  {/* Stamp header */}
+                  <div className="relative flex flex-col items-center justify-center pt-5 pb-4"
+                    style={{ background: `linear-gradient(135deg, ${c1} 0%, ${c2} 100%)`, minHeight: 110 }}>
+                    {/* Dashed border inset */}
+                    <div className="absolute inset-[6px] rounded-2xl pointer-events-none"
+                      style={{ border: '1.5px dashed rgba(255,255,255,0.25)' }} />
+                    <div className="text-[28px] font-black tracking-tight text-white/90 leading-none">{initials}</div>
+                    <div className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/60 mt-1.5">Slovensko</div>
+                    {/* Ascent count bubble */}
+                    <div className="absolute top-3 right-3 w-8 h-8 rounded-full flex flex-col items-center justify-center"
+                      style={{ background: 'rgba(255,255,255,0.18)', border: '1.5px solid rgba(255,255,255,0.35)' }}>
+                      <span className="text-[13px] font-black text-white leading-none">{v.ascents}</span>
+                    </div>
+                  </div>
+                  {/* Info */}
+                  <div className="px-3 py-3 flex-1 flex flex-col justify-between">
+                    <div className="text-[13px] font-extrabold leading-tight" style={{ color: 'var(--text)' }}>{v.name}</div>
+                    {v.lastVisit && (
+                      <div className="text-[10.5px] mt-1.5 font-semibold" style={{ color: 'var(--text-faint)' }}>
+                        {v.lastVisit}
+                      </div>
+                    )}
+                    <div className="flex items-center gap-1 mt-2">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.1em]" style={{ color: 'var(--text-faint)' }}>
+                        {v.ascents} {v.ascents === 1 ? 'prelezenie' : v.ascents < 5 ? 'prelezenia' : 'prelezení'}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="text-right shrink-0">
-                <div className="text-[18px] font-extrabold leading-none" style={{ color: 'var(--accent)' }}>{v.ascents}</div>
-                <div className="text-[10px] font-semibold" style={{ color: 'var(--text-faint)' }}>prelezov</div>
-              </div>
-              <Icon name="chevronRight" size={16} style={{ color: 'var(--text-faint)' }} />
-            </Card>
-          ))}
-        </div>
+              );
+            })}
+          </div>
+        )}
       </div>
       <BottomNav active="profil" onNav={nav} />
     </div>
