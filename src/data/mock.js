@@ -53,18 +53,18 @@ export const USER = {
 };
 
 export const LOGBOOK = [
-  { route: 'Pavúk',        grade: '6+', sektor: 'Lom A', lokalita: 'Tatranská Kotlina', when: 'pred 2 dňami',   style: 'flash',
+  { route: 'Pavúk',        grade: '6+', dlzka_m: 17, pocet_isteni: 7, sektor: 'Lom A', lokalita: 'Tatranská Kotlina', when: 'pred 2 dňami',   style: 'flash',
     note: 'Konečne flash! Pravá noha na malom stupe pred kľúčom, potom dlhý doskok do dierky. Sucho drží super.' },
-  { route: 'Hrana',        grade: '6',  sektor: 'Lom A', lokalita: 'Tatranská Kotlina', when: 'pred 2 dňami',   style: '2. pokus',
+  { route: 'Hrana',        grade: '6',  dlzka_m: 20, pocet_isteni: 8, sektor: 'Lom A', lokalita: 'Tatranská Kotlina', when: 'pred 2 dňami',   style: '2. pokus',
     note: 'Prvý pokus padák na hrane, druhý raz čisto. Treba viac dôverovať tým malým stupom.' },
-  { route: 'Mladá garda',  grade: '7-', sektor: 'Lom A', lokalita: 'Tatranská Kotlina', when: 'pred 5 dňami',   style: '4. pokus',
+  { route: 'Mladá garda',  grade: '7-', dlzka_m: 22, pocet_isteni: 9, sektor: 'Lom A', lokalita: 'Tatranská Kotlina', when: 'pred 5 dňami',   style: '4. pokus',
     note: 'Ťažký kríženec v polovici. Lepšie odšlapnutie ľavou a ide to.' },
-  { route: 'Brucho direkt',grade: '6+', sektor: 'Lom A', lokalita: 'Tatranská Kotlina', when: 'pred týždňom',   style: 'flash', note: '' },
-  { route: 'Pekná cesta',  grade: '6-', sektor: 'Lom A', lokalita: 'Tatranská Kotlina', when: 'pred týždňom',   style: 'onsight', note: '' },
-  { route: 'Mokrá cesta',  grade: '5+', sektor: 'Lom A', lokalita: 'Tatranská Kotlina', when: 'pred 2 týž.',    style: '2. pokus',
+  { route: 'Brucho direkt',grade: '6+', dlzka_m: 17, pocet_isteni: 7, sektor: 'Lom A', lokalita: 'Tatranská Kotlina', when: 'pred týždňom',   style: 'flash', note: '' },
+  { route: 'Pekná cesta',  grade: '6-', dlzka_m: 19, pocet_isteni: 7, sektor: 'Lom A', lokalita: 'Tatranská Kotlina', when: 'pred týždňom',   style: 'onsight', note: '' },
+  { route: 'Mokrá cesta',  grade: '5+', dlzka_m: 18, pocet_isteni: 7, sektor: 'Lom A', lokalita: 'Tatranská Kotlina', when: 'pred 2 týž.',    style: '2. pokus',
     note: 'Po daždi naozaj mokrá, spodná časť klzká.' },
-  { route: 'Naklonená',    grade: '4-', sektor: 'Lom A', lokalita: 'Tatranská Kotlina', when: 'pred 2 týž.',    style: 'onsight', note: '' },
-  { route: 'Diretissima',  grade: '6',  sektor: 'Lom B', lokalita: 'Zádielska tiesňava', when: 'pred mesiacom', style: '3. pokus', note: '' },
+  { route: 'Naklonená',    grade: '4-', dlzka_m: 14, pocet_isteni: 5, sektor: 'Lom A', lokalita: 'Tatranská Kotlina', when: 'pred 2 týž.',    style: 'onsight', note: '' },
+  { route: 'Diretissima',  grade: '6',  dlzka_m: 21, pocet_isteni: 8, sektor: 'Lom B', lokalita: 'Zádielska tiesňava', when: 'pred mesiacom', style: '3. pokus', note: '' },
 ];
 
 export const VISITED = [

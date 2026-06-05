@@ -370,12 +370,11 @@ export function NoteSheet({
   }, []);
 
   return (
-    <div className="absolute inset-0 z-40 flex flex-col justify-end"
+    <div className="absolute inset-0 z-40 flex flex-col justify-center px-4"
       style={{ background: 'rgba(0,0,0,0.45)' }} onClick={onClose}>
-      <div className="rounded-t-3xl flex flex-col overflow-hidden"
+      <div className="rounded-3xl flex flex-col overflow-hidden"
         style={{ background: 'var(--card)' }} onClick={(e) => e.stopPropagation()}>
-        <div className="px-5 pt-3 pb-3">
-          <div className="w-10 h-1 rounded-full mx-auto mb-4" style={{ background: 'var(--border-2)' }} />
+        <div className="px-5 pt-5 pb-5">
 
           <div className="flex items-center gap-2 mb-3">
             {onBack && (
