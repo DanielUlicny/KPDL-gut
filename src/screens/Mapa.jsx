@@ -105,6 +105,7 @@ export function RegionScreen({ nav, region }) {
     if (filter === 'zaciatocnici') return l.gradesMin !== null ? l.gradesMin < 6 : true;
     if (filter === 'pokrocili') return l.gradesMax !== null ? l.gradesMax >= 6 && (l.gradesMin || 0) < 7 : true;
     if (filter === 'profesionali') return l.gradesMax !== null ? l.gradesMax >= 7 : false;
+    if (filter === 'telocvicna') return l.telocvicna === true;
     return true;
   });
 
@@ -136,6 +137,7 @@ export function RegionScreen({ nav, region }) {
             <Chip active={filter === 'zaciatocnici'} onClick={() => setFilter('zaciatocnici')}>Začiatočníci</Chip>
             <Chip active={filter === 'pokrocili'} onClick={() => setFilter('pokrocili')}>Pokročilí</Chip>
             <Chip active={filter === 'profesionali'} onClick={() => setFilter('profesionali')}>Profesionáli</Chip>
+            <Chip active={filter === 'telocvicna'} onClick={() => setFilter('telocvicna')}>Lezecké telocvične</Chip>
           </div>
         </div>
 

@@ -239,8 +239,43 @@ export function SektorScreen({ nav, sektor, lokalita, region }) {
           <Chip active={filter === 'profesionali'} onClick={() => setFilter('profesionali')}>Profesionáli</Chip>
         </div>
 
+        {/* Prístup */}
+        <div className="px-4 mt-5">
+          <SectionLabel>Prístup</SectionLabel>
+          <Card className="mt-3" padding={false}>
+            {sektor.pristup ? (
+              <div className="p-4">
+                <div className="flex items-center gap-2 flex-wrap mb-3">
+                  {sektor.cas_pristupu != null && (
+                    <Pill tone="soft" size="sm">
+                      <Icon name="compass" size={11} stroke={2} style={{ display: 'inline', marginRight: 4 }} />
+                      {sektor.cas_pristupu} min pešo
+                    </Pill>
+                  )}
+                  {sektor.narocnost_pristupu && (
+                    <Pill tone="softer" size="sm">{sektor.narocnost_pristupu}</Pill>
+                  )}
+                </div>
+                <p className="text-[14px] leading-relaxed" style={{ color: 'var(--text)' }}>
+                  {sektor.pristup}
+                </p>
+              </div>
+            ) : (
+              <div className="p-4 flex items-center gap-3.5">
+                <div className="w-11 h-11 rounded-full grid place-items-center shrink-0"
+                  style={{ background: 'var(--bg-2)', color: 'var(--text-faint)' }}>
+                  <Icon name="compass" size={20} stroke={1.6} />
+                </div>
+                <p className="text-[13px] leading-snug" style={{ color: 'var(--text-faint)' }}>
+                  Popis prístupu k tomuto sektoru nie je zatiaľ dostupný.
+                </p>
+              </div>
+            )}
+          </Card>
+        </div>
+
         {/* Route list */}
-        <div className="px-4 mt-3 space-y-2">
+        <div className="px-4 mt-5 space-y-2">
           {loading && (
             <div className="text-[13px] py-4 text-center" style={{ color: 'var(--text-faint)' }}>Načítavam cesty…</div>
           )}
