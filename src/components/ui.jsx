@@ -70,7 +70,7 @@ export function Icon({ name, size = 22, stroke = 2, className = '', style = {}, 
 export function TopBar({ canBack = false, onBack, searchPlaceholder = 'Hľadaj skaly...' }) {
   return (
     <div className="relative z-10" style={{ background: 'var(--bg)' }}>
-      <div className="flex items-center gap-2 px-4 pb-3" style={{ paddingTop: 58 }}>
+      <div className="flex items-center gap-2 px-4 pb-3" style={{ paddingTop: 'max(16px, env(safe-area-inset-top, 16px))' }}>
         {canBack && (
           <button onClick={onBack}
             className="w-10 h-10 grid place-items-center rounded-full shrink-0 hover:bg-black/5 transition"
@@ -105,7 +105,7 @@ export function BottomNav({ active, onNav }) {
   ];
   return (
     <div className="absolute bottom-0 left-0 right-0 z-30"
-      style={{ background: 'var(--bg)', paddingBottom: 30 }}>
+      style={{ background: 'var(--bg)', paddingBottom: 'max(12px, env(safe-area-inset-bottom, 12px))' }}>
       <div className="h-px mx-4" style={{ background: 'var(--border)' }} />
       <div className="flex items-stretch justify-around px-2 pt-2">
         {tabs.map(t => {

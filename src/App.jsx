@@ -161,7 +161,7 @@ function AppShell() {
   }
 
   return (
-    <div className="min-h-screen w-full overflow-hidden" style={{ background: 'var(--bg)', fontFamily: 'var(--font-body)' }}>
+    <div className="w-full overflow-hidden" style={{ background: 'var(--bg)', fontFamily: 'var(--font-body)', height: '100dvh' }}>
       {content}
     </div>
   );
