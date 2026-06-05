@@ -83,6 +83,29 @@ export function LokalitaScreen({ nav, lokalita, region }) {
           ))}
         </div>
 
+        {/* Photos card */}
+        <div className="px-4 mt-6">
+          <SectionLabel>Fotky sektorov</SectionLabel>
+          <Card className="mt-3" padding={false}>
+            <div className="p-5 flex flex-col items-center text-center gap-3">
+              <div className="w-14 h-14 rounded-full grid place-items-center"
+                style={{ background: 'var(--bg-2)', border: '1.5px dashed var(--border-2)', color: 'var(--text-faint)' }}>
+                <Icon name="camera" size={24} stroke={1.5} />
+              </div>
+              <div>
+                <div className="text-[15px] font-bold" style={{ color: 'var(--text)' }}>Fotky sektorov</div>
+                <p className="text-[12.5px] mt-1 leading-snug" style={{ color: 'var(--text-dim)' }}>
+                  Tu budú fotky jednotlivých sektorov, aby si vedel rýchlo spoznať stenu.
+                </p>
+              </div>
+              <button className="h-9 px-5 rounded-full text-[13px] font-bold transition active:scale-[0.97]"
+                style={{ background: 'var(--accent)', color: '#fff' }}>
+                Pridať fotku
+              </button>
+            </div>
+          </Card>
+        </div>
+
         {/* Sektory section */}
         <div className="mt-6">
           <div className="px-4">

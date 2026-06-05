@@ -20,8 +20,8 @@
   --red: #d97070;
   --red-deep: #f08888;
   --red-soft: rgba(217,112,112,0.18);
-  --font-display: "Big Shoulders Display", "Bebas Neue", Impact, sans-serif;
-  --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-display: "Oswald", "Impact", sans-serif;
+  --font-body: "Nunito Sans", system-ui, sans-serif;
 }
 
 html, body {
@@ -35,10 +35,10 @@ html, body {
 
 .display-condensed {
   font-family: var(--font-display);
-  font-weight: 800;
-  font-stretch: 75%;
-  letter-spacing: -0.005em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   text-wrap: balance;
+  text-transform: uppercase;
 }
 
 ::-webkit-scrollbar { width: 0; height: 0; }
