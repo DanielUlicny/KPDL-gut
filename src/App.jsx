@@ -1,6 +1,5 @@
 // Main app — playful theme, navigation, tweaks, Supabase auth
 import React from 'react';
-import { IOSDevice } from './components/IOSFrame.jsx';
 import {
   useTweaks,
 } from './components/TweaksPanel.jsx';
@@ -162,14 +161,8 @@ function AppShell() {
   }
 
   return (
-    <div className="min-h-screen w-full grid place-items-center py-6"
-      style={{ background: '#e8e6df', fontFamily: 'var(--font-body)' }}>
-      <IOSDevice width={402} height={874} dark={t.palette === 'forest'}>
-        <div className="absolute inset-0 overflow-hidden" style={{ background: 'var(--bg)' }}>
-          {content}
-        </div>
-      </IOSDevice>
-
+    <div className="min-h-screen w-full overflow-hidden" style={{ background: 'var(--bg)', fontFamily: 'var(--font-body)' }}>
+      {content}
     </div>
   );
 }
