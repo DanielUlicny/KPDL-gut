@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>KPDL — Verejný profil lezca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    --bg: #faf8f2;
+    --card: #ffffff;
+    --bg-2: #f1ede3;
+    --border: #e8e4d8;
+    --border-2: #d6d0bf;
+    --text: #1a221c;
+    --text-dim: #5a6258;
+    --text-faint: #8e9489;
+    --accent: #2a6f4a;
+    --accent-deep: #1d5236;
+    --green-soft: #d9ecdc;
+    --amber: #d49a3a;
+    --amber-deep: #a8731f;
+    --amber-soft: #fbe9c5;
+    --red: #e35a47;
+    --red-deep: #a82d1d;
+    --red-soft: #fbdcd6;
+    --font-display: "Big Shoulders Display", "Bebas Neue", Impact, sans-serif;
+    --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+  }
+  html, body {
+    margin: 0; padding: 0;
+    background: #e8e6df;
+    color: var(--text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::-webkit-scrollbar { width: 0; height: 0; }
+  button { -webkit-tap-highlight-color: transparent; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="ios-frame.jsx"></script>
+<script type="text/babel" src="kpdl-ui.jsx"></script>
+<script type="text/babel" src="kpdl-screen-public-profile.jsx"></script>
+
+<script type="text/babel">
+  const { useState } = React;
+  function App() {
+    return (
+      <div className="min-h-screen w-full grid place-items-center py-6"
+        style={{ background: '#e8e6df', fontFamily: 'var(--font-body)' }}>
+        <IOSDevice width={402} height={874}>
+          <div className="absolute inset-0 overflow-hidden" style={{ background: 'var(--bg)' }}>
+            <PublicProfileScreen nav={() => {}} />
+          </div>
+        </IOSDevice>
+      </div>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

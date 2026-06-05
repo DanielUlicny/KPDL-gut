@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>KPDL — Print</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Anton&family=Archivo:wght@400;600;700;800&family=Archivo+Black&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    --bg: #faf8f2;
+    --card: #ffffff;
+    --bg-2: #f1ede3;
+    --border: #e8e4d8;
+    --border-2: #d6d0bf;
+    --text: #1a221c;
+    --text-dim: #5a6258;
+    --text-faint: #8e9489;
+    --accent: #2a6f4a;
+    --accent-deep: #1d5236;
+    --green-soft: #d9ecdc;
+    --amber: #d49a3a;
+    --amber-deep: #a8731f;
+    --amber-soft: #fbe9c5;
+    --red: #e35a47;
+    --red-deep: #a82d1d;
+    --red-soft: #fbdcd6;
+    --font-display: "Big Shoulders Display", "Bebas Neue", Impact, sans-serif;
+    --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+  }
+  html, body {
+    margin: 0; padding: 0;
+    background: #e8e6df;
+    color: var(--text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  .display-condensed {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-stretch: 75%;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+  }
+  ::-webkit-scrollbar { width: 0; height: 0; }
+  button { -webkit-tap-highlight-color: transparent; }
+  input, textarea { font-family: inherit; }
+  .kpdl-pill-slider {
+    -webkit-appearance: none; appearance: none;
+    height: 4px; border-radius: 999px;
+    background: var(--border-2); outline: none; cursor: pointer;
+  }
+  .kpdl-pill-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--card);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  }
+
+  /* ── Print layout ─────────────────────────────── */
+  .print-page {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    padding: 40px 0;
+  }
+  .print-caption {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-stretch: 75%;
+    font-size: 22px;
+    letter-spacing: 0.02em;
+    color: #2a2f29;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .print-caption .sub {
+    display: block;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-stretch: normal;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: #6b7268;
+    margin-top: 3px;
+  }
+
+  @media print {
+    @page { size: A4 portrait; margin: 0.6cm; }
+    html, body { background: #ffffff; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .print-page {
+      break-after: page;
+      break-inside: avoid;
+      min-height: 26cm;
+      padding: 0;
+      justify-content: center;
+    }
+    .print-page:last-child { break-after: auto; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="ios-frame.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+<script type="text/babel" src="kpdl-data.jsx"></script>
+<script type="text/babel" src="kpdl-ui.jsx"></script>
+<script type="text/babel" src="kpdl-screen-home.jsx"></script>
+<script type="text/babel" src="kpdl-screen-mapa.jsx"></script>
+<script type="text/babel" src="kpdl-screen-sektor.jsx"></script>
+<script type="text/babel" src="kpdl-screen-route.jsx"></script>
+<script type="text/babel" src="kpdl-screen-public-profile.jsx"></script>
+<script type="text/babel" src="kpdl-screen-rest.jsx"></script>
+<script type="text/babel" src="kpdl-screen-edit-profile.jsx"></script>
+
+<script type="text/babel">
+// Print app — renders each key screen in its own device frame, one per page.
+
+function applyPrintTheme() {
+  const root = document.documentElement;
+  root.dataset.dark = 'false';
+  // cream palette / sage accent / jakarta — the design's default theme
+}
+
+const noop = () => {};
+
+function PrintPage({ caption, sub, children }) {
+  return (
+    <div className="print-page">
+      <div className="print-caption">{caption}<span className="sub">{sub}</span></div>
+      <IOSDevice width={402} height={874} dark={false}>
+        <div className="absolute inset-0 overflow-hidden" style={{ background: 'var(--bg)' }}>
+          {children}
+        </div>
+      </IOSDevice>
+    </div>
+  );
+}
+
+function PrintApp() {
+  React.useEffect(() => { applyPrintTheme(); }, []);
+
+  const region   = REGIONS[4];
+  const lokalita = LOKALITY.PK[0];
+  const sektor   = SEKTORY['tatranska-kotlina'][0];
+  const route    = ROUTES_LOM_A[0];
+
+  const pages = [
+    { cap: 'Domov',    sub: 'Kam pojdeš dnes liezť?',         el: <HomeScreen nav={noop} /> },
+    { cap: 'Mapa',     sub: 'Regióny Slovenska',              el: <MapaScreen nav={noop} /> },
+    { cap: 'Región',   sub: 'Prešovský kraj',                 el: <RegionScreen nav={noop} region={region} /> },
+    { cap: 'Lokalita', sub: 'Tatranská Kotlina',              el: <LokalitaScreen nav={noop} lokalita={lokalita} region={region} /> },
+    { cap: 'Sektor',   sub: 'Lom A',                          el: <SektorScreen nav={noop} sektor={sektor} lokalita={lokalita} region={region} /> },
+    { cap: 'Cesta',    sub: 'Brucho direkt · 6+',             el: <RouteScreen nav={noop} route={route} sektor={sektor} lokalita={lokalita} region={region} /> },
+    { cap: 'Projekty', sub: 'Rozliezané cesty',               el: <ProjektyScreen nav={noop} /> },
+    { cap: 'Logbook',  sub: 'Záznamy výstupov',               el: <LogbookScreen nav={noop} /> },
+    { cap: 'Profil',   sub: 'Tvoj lezecký profil',            el: <ProfilScreen nav={noop} /> },
+  ];
+
+  return (
+    <div>
+      {pages.map((p, i) => (
+        <PrintPage key={i} caption={p.cap} sub={p.sub}>{p.el}</PrintPage>
+      ))}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<PrintApp />);
+
+// Auto-print once render, fonts, and layout have settled.
+(function () {
+  let done = false;
+  function go() {
+    if (done) return;
+    done = true;
+    setTimeout(() => window.print(), 500);
+  }
+  Promise.resolve(document.fonts ? document.fonts.ready : null)
+    .catch(() => {})
+    .then(() => {
+      // Give React a couple frames to commit the screen trees.
+      requestAnimationFrame(() => requestAnimationFrame(go));
+    });
+  // Safety fallback.
+  setTimeout(go, 4000);
+})();
+</script>
+</body>
+</html>
