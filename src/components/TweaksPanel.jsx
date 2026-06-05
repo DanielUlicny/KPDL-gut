@@ -115,7 +115,7 @@ const __TWEAKS_STYLE = `
 // Single source of truth for tweak values. Persists to localStorage so theme
 // choices survive reloads (no host/parent frame in the standalone app).
 export function useTweaks(defaults) {
-  const STORAGE_KEY = 'kpdl-tweaks';
+  const STORAGE_KEY = 'kpdl-tweaks-v2';
   const [values, setValues] = React.useState(() => {
     try {
       const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');

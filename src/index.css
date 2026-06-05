@@ -3,23 +3,23 @@
 @tailwind utilities;
 
 :root {
-  --bg: #faf8f2;
-  --card: #ffffff;
-  --bg-2: #f1ede3;
-  --border: #e8e4d8;
-  --border-2: #d6d0bf;
-  --text: #1a221c;
-  --text-dim: #5a6258;
-  --text-faint: #8e9489;
-  --accent: #2a6f4a;
-  --accent-deep: #1d5236;
-  --green-soft: #d9ecdc;
-  --amber: #d49a3a;
-  --amber-deep: #a8731f;
-  --amber-soft: #fbe9c5;
+  --bg: #ffefd0;
+  --card: #fffcf0;
+  --bg-2: #f5e4be;
+  --border: #e8d8b0;
+  --border-2: #d0c098;
+  --text: #232830;
+  --text-dim: #485978;
+  --text-faint: #7b8faa;
+  --accent: #485978;
+  --accent-deep: #2e3d52;
+  --green-soft: #d8eef1;
+  --amber: #ffb133;
+  --amber-deep: #cc8800;
+  --amber-soft: #ffe5b0;
   --red: #e35a47;
   --red-deep: #a82d1d;
-  --red-soft: #fbdcd6;
+  --red-soft: #fbe0d6;
   --font-display: "Big Shoulders Display", "Bebas Neue", Impact, sans-serif;
   --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
 }

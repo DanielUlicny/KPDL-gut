@@ -21,6 +21,7 @@ const ACCENT_BY_HEX = {
   '#1d6e89': { deep: '#14516b', soft: '#d4e8f0', label: 'Lake' },
   '#c25444': { deep: '#962f23', soft: '#f5dcd6', label: 'Clay' },
   '#7a5cc4': { deep: '#4f3a8a', soft: '#e4dcf2', label: 'Plum' },
+  '#485978': { deep: '#2e3d52', soft: '#d8eef1', label: 'Sommet' },
 };
 
 const PALETTE_OPTIONS = {
@@ -45,6 +46,13 @@ const PALETTE_OPTIONS = {
     red: '#e88a73', redDeep: '#f0a594', redSoft: 'rgba(232,138,115,0.18)',
     label: 'Forest (dark)',
   },
+  alpine: {
+    bg: '#ffefd0', card: '#fffcf0', bg2: '#f5e4be', border: '#e8d8b0', border2: '#d0c098',
+    text: '#232830', dim: '#485978', faint: '#7b8faa',
+    amber: '#ffb133', amberDeep: '#cc8800', amberSoft: '#ffe5b0',
+    red: '#e35a47', redDeep: '#a82d1d', redSoft: '#fbe0d6',
+    label: 'Alpine',
+  },
 };
 
 const FONT_OPTIONS = {
@@ -55,8 +63,8 @@ const FONT_OPTIONS = {
 };
 
 const TWEAK_DEFAULTS = {
-  palette: 'cream',
-  accent: '#2a6f4a',
+  palette: 'alpine',
+  accent: '#485978',
   font: 'jakarta',
   screen: 'home',
 };
