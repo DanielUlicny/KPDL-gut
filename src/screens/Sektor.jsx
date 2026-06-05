@@ -205,34 +205,34 @@ export function SektorScreen({ nav, sektor, lokalita, region }) {
       <TopBar canBack onBack={() => nav('lokalita', { lokalita, region })} />
 
       <div className="flex-1 overflow-y-auto pb-28">
-        <div className="px-5 pt-3">
-          <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: 'var(--accent)' }}>
+        <div className="px-5 pt-4">
+          <div className="text-[12px] font-bold uppercase tracking-[0.18em]" style={{ color: 'var(--accent)' }}>
             {lokalita?.nazov || lokalita?.name || ''}
           </div>
-          <h1 className="text-[32px] font-extrabold leading-tight mt-1" style={{ color: 'var(--text)' }}>
+          <h1 className="text-[42px] font-extrabold leading-tight mt-1" style={{ color: 'var(--text)' }}>
             {sektor.nazov || sektor.name}
           </h1>
         </div>
 
         {/* Progress card */}
-        <div className="px-4 mt-3">
-          <Card className="flex items-center gap-4">
+        <div className="px-4 mt-4">
+          <Card className="flex items-center gap-4" padding={false} style={{ padding: '20px 20px' }}>
             <div className="flex-1">
-              <div className="text-[26px] font-extrabold leading-none" style={{ color: 'var(--text)' }}>
+              <div className="text-[36px] font-extrabold leading-none" style={{ color: 'var(--text)' }}>
                 {cesty.length}
-                <span className="text-[14px] font-bold ml-1.5" style={{ color: 'var(--text-dim)' }}>{skPlural(cesty.length, 'cesta', 'cesty', 'ciest')}</span>
+                <span className="text-[17px] font-bold ml-2" style={{ color: 'var(--text-dim)' }}>{skPlural(cesty.length, 'cesta', 'cesty', 'ciest')}</span>
               </div>
-              <div className="text-[13px] font-semibold mt-2 flex items-center gap-1.5" style={{ color: 'var(--text-dim)' }}>
-                <Icon name="check" size={13} stroke={2.4} />
+              <div className="text-[15px] font-semibold mt-2.5 flex items-center gap-1.5" style={{ color: 'var(--text-dim)' }}>
+                <Icon name="check" size={15} stroke={2.4} />
                 {sentCount} {skPlural(sentCount, 'prelezená', 'prelezené', 'prelezených')}
               </div>
             </div>
-            <ProgressRing value={progressFraction} size={66} stroke={6} />
+            <ProgressRing value={progressFraction} size={82} stroke={7} />
           </Card>
         </div>
 
         {/* Filters */}
-        <div className="mt-4 px-4 flex items-center gap-2 overflow-x-auto pb-1">
+        <div className="mt-5 px-4 flex items-center gap-2 overflow-x-auto pb-1">
           <Chip active={filter === 'vsetky'} onClick={() => setFilter('vsetky')}>Všetky</Chip>
           <Chip active={filter === 'zaciatocnici'} onClick={() => setFilter('zaciatocnici')}>Začiatočníci</Chip>
           <Chip active={filter === 'pokrocili'} onClick={() => setFilter('pokrocili')}>Pokročilí</Chip>
