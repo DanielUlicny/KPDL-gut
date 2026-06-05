@@ -1,7 +1,7 @@
 // Screens: LOKALITA detail + SEKTOR detail
 import React, { useState, useEffect, useMemo } from 'react';
 import { TopBar, BottomNav, Card, Pill, Chip, GradeBadge, NumDot, ProgressRing, SectionLabel, Icon, skPlural } from '../components/ui.jsx';
-import { fetchSektory, fetchCesty } from '../lib/db.js';
+import { getSektory, getCesty } from '../lib/guidebook.js';
 import { useLogbook } from '../hooks/useData.js';
 import { PrelezSheet } from './Route.jsx';
 
@@ -10,7 +10,7 @@ export function LokalitaScreen({ nav, lokalita, region }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchSektory(lokalita.id)
+    getSektory(lokalita.id)
       .then(data => { setSektory(data); setLoading(false); })
       .catch(err => { console.error('Error loading sektory:', err); setLoading(false); });
   }, [lokalita.id]);
@@ -130,7 +130,7 @@ export function SektorScreen({ nav, sektor, lokalita, region }) {
   const { logbook, addEntry } = useLogbook();
 
   useEffect(() => {
-    fetchCesty(sektor.id)
+    getCesty(sektor.id)
       .then(data => { setCesty(data); setLoading(false); })
       .catch(err => { console.error('Error loading cesty:', err); setLoading(false); });
   }, [sektor.id]);

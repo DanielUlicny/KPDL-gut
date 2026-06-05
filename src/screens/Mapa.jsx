@@ -1,7 +1,7 @@
 // Screens: MAPA + REGION DETAIL
 import React, { useState, useEffect } from 'react';
 import { TopBar, BottomNav, Card, Pill, Chip, RegionAvatar, SectionLabel, Icon, skPlural } from '../components/ui.jsx';
-import { fetchKraje, fetchLokality } from '../lib/db.js';
+import { getKraje, getLokality } from '../lib/guidebook.js';
 
 const REGION_COLORS = ['#2a6f4a', '#1d5236', '#c89234', '#9bc7a5', '#f1ad77', '#5d9270', '#1d5236', '#2a6f4a'];
 
@@ -10,7 +10,7 @@ export function MapaScreen({ nav }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchKraje()
+    getKraje()
       .then(data => { setKraje(data); setLoading(false); })
       .catch(err => { console.error('Error loading kraje:', err); setLoading(false); });
   }, []);
@@ -94,7 +94,7 @@ export function RegionScreen({ nav, region }) {
   const [filter, setFilter] = useState('vsetky');
 
   useEffect(() => {
-    fetchLokality(region.kod)
+    getLokality(region.kod)
       .then(data => { setLokality(data); setLoading(false); })
       .catch(err => { console.error('Error loading lokality:', err); setLoading(false); });
   }, [region.kod]);
