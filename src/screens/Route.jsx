@@ -1,7 +1,6 @@
 // Screens: ROUTE detail + AR overlay + sheets
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { TopBar, BottomNav, Card, Pill, GradeBadge, SectionLabel, Icon } from '../components/ui.jsx';
-import { IOSKeyboard } from '../components/IOSFrame.jsx';
 import { useProjects, useLogbook } from '../hooks/useData.js';
 
 // Normalize route object — accept both mock (name/grade) and DB (nazov/obtaznost) field names
@@ -29,7 +28,7 @@ const STYLE_LABELS = {
   '5plus_pokusov': '5+ pokusov',
 };
 
-export function RouteScreen({ nav, route, sektor, lokalita, region, ascent }) {
+export function RouteScreen({ nav, back, route, sektor, lokalita, region, ascent }) {
   const [arOpen, setArOpen] = useState(false);
   const [sent, setSent] = useState(false);
   const [sendType, setSendType] = useState(null);
@@ -74,7 +73,7 @@ export function RouteScreen({ nav, route, sektor, lokalita, region, ascent }) {
 
   return (
     <div className="relative flex flex-col h-full" style={{ background: 'var(--bg)' }}>
-      <TopBar canBack onBack={() => nav('sektor', { sektor, lokalita, region })} />
+      <TopBar canBack onBack={back || (() => nav('sektor', { sektor, lokalita, region }))} />
 
       <div className="flex-1 overflow-y-auto pb-28">
         {/* Topo image */}
@@ -294,7 +293,7 @@ const PRELEZ_OPTIONS = [
   { id: '5plus_pokusov',  title: '5+ pokusov',  desc: 'Pracoval/a som na nej dlhšie', icon: 'check', tone: 'soft' },
 ];
 
-export function PrelezSheet({ onClose, onDone }) {
+export function PrelezSheet({ onClose, onDone, initialNote = '' }) {
   const [step, setStep] = useState(1);
   const [pick, setPick] = useState(null);
 
@@ -305,6 +304,7 @@ export function PrelezSheet({ onClose, onDone }) {
         title="Poznámka k výlezu"
         subtitle="Voliteľné"
         placeholder="Aké si mal problémy? Čo si skúšal..."
+        initial={initialNote}
         secondaryLabel="Preskočiť"
         primaryLabel="Uložiť"
         context={opt}
@@ -363,7 +363,6 @@ export function NoteSheet({
 }) {
   const [text, setText] = useState(initial);
   const ref = useRef(null);
-  const dark = document.documentElement.dataset.dark === 'true';
 
   useEffect(() => {
     const t = setTimeout(() => { try { ref.current?.focus(); } catch (e) {} }, 60);
@@ -426,9 +425,6 @@ export function NoteSheet({
           </div>
         </div>
 
-        <div style={{ background: 'var(--bg-2)' }}>
-          <IOSKeyboard dark={dark} />
-        </div>
       </div>
     </div>
   );

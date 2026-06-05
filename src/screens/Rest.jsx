@@ -125,7 +125,7 @@ function BadgesCarousel({ badges, earnedBadges }) {
   );
 }
 
-export function ProjektyScreen({ nav }) {
+export function ProjektyScreen({ nav, back }) {
   const [tab, setTab] = useState('aktivne');
   const [markingIdx, setMarkingIdx] = useState(null);
   const [editNoteIdx, setEditNoteIdx] = useState(null);
@@ -155,7 +155,7 @@ export function ProjektyScreen({ nav }) {
 
   return (
     <div className="relative flex flex-col h-full" style={{ background: 'var(--bg)' }}>
-      <TopBar canBack onBack={() => nav('home')} />
+      <TopBar canBack onBack={back || (() => nav('home'))} />
 
       <div className="flex-1 overflow-y-auto pb-28">
         <div className="px-5 pt-3">
@@ -293,6 +293,7 @@ export function ProjektyScreen({ nav }) {
         <PrelezSheet
           onClose={() => setMarkingIdx(null)}
           onDone={handleMarkSent}
+          initialNote={projects[markingIdx]?.notes || ''}
         />
       )}
 
@@ -522,7 +523,7 @@ function bestStyleOf(ascents) {
   }, ascents[0]?.style || '');
 }
 
-export function LogbookScreen({ nav }) {
+export function LogbookScreen({ nav, back }) {
   const [filter, setFilter] = useState('vsetky');
   const [openKey, setOpenKey] = useState(null);
   const [editEntry, setEditEntry] = useState(null); // { _i, route }
@@ -544,7 +545,7 @@ export function LogbookScreen({ nav }) {
     filtered.forEach(l => {
       const key = l.route_id || l.route;
       if (!map.has(key)) {
-        map.set(key, { key, route: l.route, grade: l.grade, sektor: l.sektor, lokalita: l.lokalita, route_id: l.route_id, dlzka_m: l.dlzka_m, ascents: [] });
+        map.set(key, { key, route: l.route, grade: l.grade, sektor: l.sektor, lokalita: l.lokalita, route_id: l.route_id, dlzka_m: l.dlzka_m, pocet_isteni: l.pocet_isteni, ascents: [] });
       }
       map.get(key).ascents.push(l);
     });
@@ -562,7 +563,7 @@ export function LogbookScreen({ nav }) {
 
   return (
     <div className="relative flex flex-col h-full" style={{ background: 'var(--bg)' }}>
-      <TopBar canBack onBack={() => nav('profil')} />
+      <TopBar canBack onBack={back || (() => nav('profil'))} />
       <div className="flex-1 overflow-y-auto pb-28">
         <div className="px-5 pt-3">
           <h1 className="text-[32px] font-extrabold leading-tight" style={{ color: 'var(--text)' }}>Logbook</h1>
@@ -635,7 +636,7 @@ export function LogbookScreen({ nav }) {
                     </div>
                     <button
                       onClick={() => nav('route', {
-                        route: { id: g.route_id, nazov: g.route, obtaznost: g.grade, dlzka_m: g.dlzka_m },
+                        route: { id: g.route_id, nazov: g.route, obtaznost: g.grade, dlzka_m: g.dlzka_m, pocet_isteni: g.pocet_isteni },
                         sektor: { nazov: g.sektor },
                         lokalita: { nazov: g.lokalita },
                         region: { nazov: '' },
@@ -671,13 +672,13 @@ export function LogbookScreen({ nav }) {
   );
 }
 
-export function VisitedScreen({ nav }) {
+export function VisitedScreen({ nav, back }) {
   const { logbook } = useLogbook();
   const visited = useVisited(logbook);
 
   return (
     <div className="relative flex flex-col h-full" style={{ background: 'var(--bg)' }}>
-      <TopBar canBack onBack={() => nav('profil')} />
+      <TopBar canBack onBack={back || (() => nav('profil'))} />
       <div className="flex-1 overflow-y-auto pb-28">
         <div className="px-5 pt-3">
           <h1 className="text-[32px] font-extrabold leading-tight" style={{ color: 'var(--text)' }}>Navštívené lokality</h1>

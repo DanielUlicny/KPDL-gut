@@ -1,12 +1,59 @@
-import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { useAuth } from './auth.jsx';
 import {
   fetchLogbook, addLogbookEntry, updateLogbookNote,
   fetchProjects, addProject, removeProject, updateProjectNotes,
   fetchProfile, upsertProfile,
   fetchUserBadges, awardBadgesIfNeeded,
-  fetchUserStats,
 } from '../lib/db.js';
+
+const GRADE_ORDER = [
+  '3','3+','4','4-','4+','5','5-','5+','5a','5b','5c',
+  '6','6-','6a','6a+','6b','6b+','6c','6c+','6+',
+  '7','7-','7a','7a+','7b','7b+','7c','7c+','7+',
+  '8','8-','8a','8a+','8b','8b+','8c','8c+','8+','9a',
+];
+
+function computeStats(logbook) {
+  const sent = logbook.length;
+  const totalLen = logbook.reduce((s, e) => s + (e.dlzka_m || 0), 0);
+
+  const grades = logbook.map(e => e.grade).filter(g => g && g !== '?');
+  const best = grades.length === 0 ? '?' : grades.reduce((b, g) => {
+    const bi = GRADE_ORDER.indexOf(b), gi = GRADE_ORDER.indexOf(g);
+    if (bi === -1 && gi === -1) return b;
+    if (bi === -1) return g;
+    if (gi === -1) return b;
+    return gi > bi ? g : b;
+  }, grades[0]);
+
+  const dates = logbook.map(e => e.ascended_at).filter(Boolean);
+  const days = [...new Set(dates.map(d => new Date(d).toDateString()))]
+    .map(d => new Date(d)).sort((a, b) => b - a);
+  let streak = 0;
+  if (days.length > 0) {
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const first = new Date(days[0]); first.setHours(0, 0, 0, 0);
+    if ((today - first) / 86400000 <= 1) {
+      streak = 1;
+      for (let i = 1; i < days.length; i++) {
+        const prev = new Date(days[i - 1]); prev.setHours(0, 0, 0, 0);
+        const curr = new Date(days[i]); curr.setHours(0, 0, 0, 0);
+        if ((prev - curr) / 86400000 === 1) streak++;
+        else break;
+      }
+    }
+  }
+
+  const weekAgo = Date.now() - 7 * 86400000;
+  const thisWeekDays = new Set(
+    logbook
+      .filter(e => e.ascended_at && new Date(e.ascended_at).getTime() >= weekAgo)
+      .map(e => new Date(e.ascended_at).toDateString())
+  );
+
+  return { sent, totalLen, best: best || '?', streak, thisWeek: thisWeekDays.size };
+}
 
 const DataContext = createContext(null);
 
@@ -26,8 +73,8 @@ export function DataProvider({ children }) {
   const [profile, setProfile] = useState(null);
   const [profileLoading, setProfileLoading] = useState(true);
 
-  // ── Stats ──
-  const [stats, setStats] = useState({ sent: 0, totalLen: 0, best: '?', streak: 0, thisWeek: 0 });
+  // ── Stats — reaktívne z logbooku ──
+  const stats = useMemo(() => computeStats(logbook), [logbook]);
 
   // ── Badges ──
   const [badges, setBadges] = useState([]);
@@ -47,8 +94,6 @@ export function DataProvider({ children }) {
     fetchProfile(user.id)
       .then(data => { setProfile(data); setProfileLoading(false); })
       .catch(console.error);
-
-    fetchUserStats(user.id).then(setStats).catch(console.error);
 
     fetchUserBadges(user.id).then(setBadges).catch(console.error);
   }, [user]);

@@ -150,13 +150,13 @@ function AppShell() {
       case 'region':   content = <RegionScreen nav={nav} region={props.region || REGIONS[4]} />; break;
       case 'lokalita': content = <LokalitaScreen nav={nav} lokalita={props.lokalita || LOKALITY.PK[0]} region={props.region || REGIONS[4]} />; break;
       case 'sektor':   content = <SektorScreen nav={nav} sektor={props.sektor || SEKTORY['tatranska-kotlina'][0]} lokalita={props.lokalita || LOKALITY.PK[0]} region={props.region || REGIONS[4]} />; break;
-      case 'route':    content = <RouteScreen nav={nav} route={props.route || ROUTES_LOM_A[0]} sektor={props.sektor || SEKTORY['tatranska-kotlina'][0]} lokalita={props.lokalita || LOKALITY.PK[0]} region={props.region || REGIONS[4]} ascent={props.ascent} />; break;
+      case 'route':    content = <RouteScreen nav={nav} back={goBack} route={props.route || ROUTES_LOM_A[0]} sektor={props.sektor || SEKTORY['tatranska-kotlina'][0]} lokalita={props.lokalita || LOKALITY.PK[0]} region={props.region || REGIONS[4]} ascent={props.ascent} />; break;
       case 'publicProfile': content = <PublicProfileScreen nav={nav} back={goBack} person={props.person} />; break;
-      case 'projekty': content = <ProjektyScreen nav={nav} />; break;
+      case 'projekty': content = <ProjektyScreen nav={nav} back={goBack} />; break;
       case 'profil':   content = <ProfilScreen nav={nav} />; break;
-      case 'editProfile': content = <EditProfileScreen nav={nav} />; break;
-      case 'logbook':  content = <LogbookScreen nav={nav} />; break;
-      case 'visited':  content = <VisitedScreen nav={nav} />; break;
+      case 'editProfile': content = <EditProfileScreen nav={nav} back={goBack} />; break;
+      case 'logbook':  content = <LogbookScreen nav={nav} back={goBack} />; break;
+      case 'visited':  content = <VisitedScreen nav={nav} back={goBack} />; break;
       default:         content = <HomeScreen nav={nav} />;
     }
   }

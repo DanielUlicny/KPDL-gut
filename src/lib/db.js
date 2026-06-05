@@ -147,7 +147,7 @@ export async function fetchAllLokality() {
   }
   const { data, error } = await supabase
     .from('lokality')
-    .select('id, nazov, popis')
+    .select('id, nazov, popis, typ_skaly, sezona, orientacia, pristupnost, lat, lng')
     .order('nazov')
     .limit(10);
   if (error) throw error;
@@ -264,7 +264,7 @@ export async function fetchLogbook(userId) {
   // Resolve route → sektor → lokalita names in batch
   const routeIds = [...new Set(data.map(r => r.route_id).filter(Boolean))];
   const { data: cestyData } = routeIds.length
-    ? await supabase.from('cesty').select('id, nazov, obtaznost, dlzka_m, sektor_id').in('id', routeIds)
+    ? await supabase.from('cesty').select('id, nazov, obtaznost, dlzka_m, pocet_isteni, sektor_id').in('id', routeIds)
     : { data: [] };
   const sektorIds = [...new Set((cestyData || []).map(c => c.sektor_id).filter(Boolean))];
   const { data: sekData } = sektorIds.length
@@ -289,6 +289,7 @@ export async function fetchLogbook(userId) {
       route: cesta.nazov || 'Unknown',
       grade: cesta.obtaznost || '?',
       dlzka_m: cesta.dlzka_m || 0,
+      pocet_isteni: cesta.pocet_isteni || 0,
       sektor: sek.nazov || '',
       lokalita: lok.nazov || '',
       when: formatRelative(row.ascended_at),

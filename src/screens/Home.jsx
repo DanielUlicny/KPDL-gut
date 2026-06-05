@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { TopBar, BottomNav, Card, GradeBadge, NumDot, SectionLabel, Icon, skPlural } from '../components/ui.jsx';
 import { useProjects, useLogbook, useStats } from '../hooks/useData.js';
-import { fetchAllLokality } from '../lib/db.js';
+import { getAllLokality } from '../lib/guidebook.js';
 import climberImg from '../assets/climber.png';
 
 export function HomeScreen({ nav }) {
@@ -12,7 +12,7 @@ export function HomeScreen({ nav }) {
   const [nearbyLokality, setNearbyLokality] = useState([]);
 
   useEffect(() => {
-    fetchAllLokality().then(setNearbyLokality).catch(console.error);
+    getAllLokality().then(setNearbyLokality).catch(console.error);
   }, []);
 
   const topProject = projects[0];
