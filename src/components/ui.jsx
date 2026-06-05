@@ -78,13 +78,13 @@ export function TopBar({ canBack = false, onBack, searchPlaceholder = 'Hľadaj s
             <Icon name="arrowLeft" size={20} stroke={2.2} />
           </button>
         )}
-        <div className="flex-1 flex items-center gap-2 h-11 pl-4 pr-2 rounded-full"
-          style={{ background: 'var(--bg-2)' }}>
-          <Icon name="search" size={17} stroke={2.2} style={{ color: 'var(--text-faint)' }} />
-          <span className="text-[14px] flex-1 truncate" style={{ color: 'var(--text-faint)' }}>{searchPlaceholder}</span>
-          <button className="w-8 h-8 grid place-items-center rounded-full shrink-0 hover:bg-black/5 transition"
+        <div className="flex-1 flex items-center gap-3 pl-5 pr-2 rounded-full"
+          style={{ background: 'var(--bg-2)', height: '52px' }}>
+          <Icon name="search" size={20} stroke={2.2} style={{ color: 'var(--text-faint)' }} />
+          <span className="text-[16px] flex-1 truncate" style={{ color: 'var(--text-faint)' }}>{searchPlaceholder}</span>
+          <button className="w-9 h-9 grid place-items-center rounded-full shrink-0 hover:bg-black/5 transition"
             style={{ color: 'var(--text)' }}>
-            <Icon name="filter" size={18} stroke={2} />
+            <Icon name="filter" size={20} stroke={2} />
           </button>
         </div>
       </div>
@@ -112,11 +112,11 @@ export function BottomNav({ active, onNav }) {
           const a = active === t.id;
           return (
             <button key={t.id} onClick={() => onNav(t.id)}
-              className="flex flex-col items-center justify-end gap-1 flex-1 py-1.5"
+              className="flex flex-col items-center justify-end gap-1.5 flex-1 py-2"
               style={{ color: a ? 'var(--accent)' : 'var(--text-faint)' }}>
-              <Icon name={t.icon} size={22} stroke={a ? 2.2 : 1.8} fill={a ? 'currentColor' : 'none'}
+              <Icon name={t.icon} size={28} stroke={a ? 2.2 : 1.8} fill={a ? 'currentColor' : 'none'}
                 style={a ? { fillOpacity: 0.12 } : {}} />
-              <span className="text-[11px]" style={{ fontWeight: a ? 700 : 500 }}>{t.label}</span>
+              <span className="text-[13px]" style={{ fontWeight: a ? 700 : 500 }}>{t.label}</span>
             </button>
           );
         })}
