@@ -3,23 +3,23 @@
 @tailwind utilities;
 
 :root {
-  --bg: #f5f9fa;
-  --card: #ffffff;
-  --bg-2: #e4f0f3;
-  --border: #c8dfe5;
-  --border-2: #aaccd5;
-  --text: #232830;
-  --text-dim: #485978;
-  --text-faint: #7b99ab;
-  --accent: #ffb133;
-  --accent-deep: #cc8800;
-  --green-soft: #fff4d5;
-  --amber: #ffb133;
-  --amber-deep: #cc8800;
-  --amber-soft: #ffe8a8;
-  --red: #e35a47;
-  --red-deep: #a82d1d;
-  --red-soft: #fbe0d6;
+  --bg: #1f2829;
+  --card: #1a2e35;
+  --bg-2: #162328;
+  --border: #2c4450;
+  --border-2: #3a5a6a;
+  --text: #dddbc8;
+  --text-dim: #989481;
+  --text-faint: #6b6954;
+  --accent: #8297cc;
+  --accent-deep: #5a74b8;
+  --green-soft: rgba(130,151,204,0.18);
+  --amber: #c8a550;
+  --amber-deep: #e0be68;
+  --amber-soft: rgba(200,165,80,0.18);
+  --red: #d97070;
+  --red-deep: #f08888;
+  --red-soft: rgba(217,112,112,0.18);
   --font-display: "Big Shoulders Display", "Bebas Neue", Impact, sans-serif;
   --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
 }
@@ -27,7 +27,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: #e8e6df;
+  background: #14343f;
   color: var(--text);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
