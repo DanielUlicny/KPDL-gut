@@ -22,6 +22,8 @@ const ACCENT_BY_HEX = {
   '#c25444': { deep: '#962f23', soft: '#f5dcd6', label: 'Clay' },
   '#7a5cc4': { deep: '#4f3a8a', soft: '#e4dcf2', label: 'Plum' },
   '#485978': { deep: '#2e3d52', soft: '#d8eef1', label: 'Sommet' },
+  '#8297cc': { deep: '#5a74b8', soft: '#d0d8f0', label: 'Periwinkle' },
+  '#4c8c64': { deep: '#2e6644', soft: '#c8e8d4', label: 'Pine' },
 };
 
 const PALETTE_OPTIONS = {
@@ -53,6 +55,13 @@ const PALETTE_OPTIONS = {
     red: '#e35a47', redDeep: '#a82d1d', redSoft: '#fbe0d6',
     label: 'Alpine',
   },
+  fjord: {
+    bg: '#1f2829', card: '#1a2e35', bg2: '#162328', border: '#2c4450', border2: '#3a5a6a',
+    text: '#dddbc8', dim: '#989481', faint: '#6b6954',
+    amber: '#c8a550', amberDeep: '#e0be68', amberSoft: 'rgba(200,165,80,0.18)',
+    red: '#d97070', redDeep: '#f08888', redSoft: 'rgba(217,112,112,0.18)',
+    label: 'Fjord (dark)',
+  },
 };
 
 const FONT_OPTIONS = {
@@ -63,8 +72,8 @@ const FONT_OPTIONS = {
 };
 
 const TWEAK_DEFAULTS = {
-  palette: 'alpine',
-  accent: '#485978',
+  palette: 'fjord',
+  accent: '#8297cc',
   font: 'jakarta',
   screen: 'home',
 };
@@ -76,7 +85,7 @@ function applyTheme(t) {
   const accentHex = ACCENT_BY_HEX[t.accent] ? t.accent : '#2a6f4a';
   const fnt = FONT_OPTIONS[t.font] || FONT_OPTIONS.jakarta;
 
-  const isDark = t.palette === 'forest';
+  const isDark = t.palette === 'forest' || t.palette === 'fjord';
   root.dataset.dark = isDark ? 'true' : 'false';
   const softAccent = isDark
     ? `color-mix(in oklab, ${accentHex} 22%, transparent)`
